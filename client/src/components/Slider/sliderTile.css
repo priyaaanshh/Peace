@@ -1,0 +1,61 @@
+.SliderTile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-display: row;
+}
+
+.SliderTileImg {
+    width: 45px;
+    height: 45px;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.SliderDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.SliderHeading {
+    margin: 0;
+    color: #113F67;
+    font-size: 12px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.28px;
+}
+
+.SliderDetailRow {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+
+.SliderDetailRow>div {
+    height: 4px;
+    width: 4px;
+    border-radius: 50%;
+    background-color: #113F67;
+}
+
+.SliderTileSubHeading {
+    margin: 0;
+    margin-bottom: 2px;
+    color: #113F67;
+    font-size: 10px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.24px;
+}

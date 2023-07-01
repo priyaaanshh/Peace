@@ -1,0 +1,255 @@
+.signup-container {
+    background-color: black;
+    background-image: url(../../assets/signup-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    font-family: "Poppins";
+}
+
+.navBar-row {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgba(27, 27, 27, 0.586);
+}
+
+.navBar-row>img {
+    height: 60px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 15px;
+}
+
+.auth-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-right: 15px;
+    padding: 8px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 6px;
+    /* background-color: rgba(255, 255, 255, 0.7); */
+    color: white;
+}
+
+
+.signup-box {
+    transform: scale(0.83);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    width: 100%;
+    max-width: 720px;
+    height: 700px;
+    border-radius: 12px;
+}
+
+.signup-column {
+    transform: scale(1.05);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+}
+
+.signup-title {
+    padding: 0;
+    margin: 0;
+    color: #000;
+    text-align: center;
+    font-size: 44px;
+    font-family: "Poppins";
+    font-weight: 700;
+}
+
+.signup-subtitle {
+    font-family: "Poppins";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#blue-line {
+    color: #177ACF;
+}
+
+.icon-box-row {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    border: 1px solid #DDDFDD;
+    border-radius: 12px;
+    background: #F6F6F6;
+}
+
+.icon-box>svg {
+    font-size: 26px;
+}
+
+.icon-box-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    border: 1px solid white;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.icon-box-button>svg {
+    font-size: 26px;
+}
+
+.seperator-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.seperator {
+    border: 0.3px solid #DFDFDF;
+    height: 0px;
+    width: 30%;
+}
+
+.seperator-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    color: #ACADAC;
+}
+
+.tnc-lines {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+.signup-form {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+}
+
+.signup-label {
+    display: block;
+    margin-bottom: 8px;
+    color: white;
+    width: 100%;
+    max-width: 370px;
+}
+
+.signup-input {
+    width: 100%;
+    height: 48px;
+    max-width: 370px;
+    margin-top: 16px;
+    border: 1px solid #fff;
+    background-color: #EAF0F7;
+    border-radius: 10px;
+}
+
+.signup-input::placeholder {
+    padding-left: 12px;
+    font-size: 15px;
+    color: black;
+    font-weight: 500;
+}
+
+.signup-btn,
+.googleAuth-btn {
+    padding: 8px 16px;
+    background-color: #113F67;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    height: 48px;
+    width: 100%;
+    max-width: 390px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 100ms background-color ease-in-out;
+}
+
+.signup-btn:hover {
+    background-color: #191d88;
+}
+
+.googleAuth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 14px 0px;
+    background-color: #afffffff;
+    color: #636161;
+}
+
+.googleAuth-btn:hover {
+    background-color: #ffffff;
+}
+
+.googleAuth-btn>svg {
+    font-size: 24px;
+}
+
+.signup-error-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    width: 100%;
+    max-width: 370px;
+    margin-top: 12px;
+    border: 1px solid #fff;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(26, 24, 24);
+    background-color: #ff0000c6;
+    border-radius: 10px;
+}

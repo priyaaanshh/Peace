@@ -1,0 +1,87 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 8px 8px 20px 8px;
+    /* width: 22%; */
+    margin-top: 4px;
+    margin-bottom: 4px;
+    width: 280px;
+    border-radius: 10px;
+    background: rgba(218, 218, 218, 0.50);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    position: relative;
+}
+
+.card-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 15px;
+    width: 45px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(10px);
+    color: #FFF;
+    font-size: 12px;
+    font-family: Poppins;
+    font-weight: 500;
+    letter-spacing: -0.28px;
+    top: 25px;
+    left: 16px;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
+}
+
+.CardDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.CardHeading {
+    color: #113F67;
+    margin: 0;
+    margin-top: 5px;
+    font-size: 18px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.48px;
+}
+
+.CardDetailRow {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+}
+
+.CardDetailRow>div {
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: #113F67;
+}
+
+.CardTileSubHeading {
+    color: #113F67;
+    margin: 0;
+    font-size: 14px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.4px;
+}
