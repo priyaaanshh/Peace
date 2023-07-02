@@ -1,17 +1,10 @@
 import mongoose from "mongoose";
 
-const MessageSchema = new mongoose.Schema(
-    {
-        sender: String,
-        message: String,
-    },
-    { timestamps: true }
-);
-
 const ChatSchema = new mongoose.Schema({
     chatId: {
         type: String,
-        required:true,
+        required: true,
+        unique:true,
     },
     members: [
         {
@@ -19,7 +12,12 @@ const ChatSchema = new mongoose.Schema({
             required: true,
         },
     ],
-    messages: [MessageSchema],
+    messages: [
+        {
+            sender: String,
+            message: String,
+        },
+        { timestamps: true }],
     isGroupChat: {
         type: Boolean,
         default: false,

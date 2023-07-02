@@ -12,7 +12,7 @@ const OnBoardingSurvey = () => {
     const [selectedText, setSelectedText] = useState("Good");
     const goBack = () => {
         if (pageNum <= 0) {
-            navigate("/onBoarding");
+            navigate(-1);
         } else {
             setPageNum(pageNum - 1);
         }

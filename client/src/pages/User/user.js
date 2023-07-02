@@ -1,17 +1,22 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import Back from '../../assets/svg/back';
 import './user.css';
 import { AuthContext } from '../../Context/authContext';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { baseURL } from '../../baseURL/baseURL';
 import useFetch from '../../hooks/useFetch';
+import userImage from '../../assets/dr_image.png'
+import ManageSubs from '../../assets/svg/credit card';
+import UserIcon from '../../assets/svg/user';
+import Logout from '../../assets/svg/exit';
+import LockIcon from '../../assets/svg/lock';
 
 const UserProfile = () => {
   const [userInfo, setUserInfo] = useState({});
-  const { id } = useParams();
 
   const { dispatch } = useContext(AuthContext);
-  const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${id}`)
+  const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))._id}`)
   useEffect(() => {
     setUserInfo(data);
   }, [data])
@@ -58,7 +63,7 @@ const UserProfile = () => {
   const handleProfileUpdate = async () => {
     dispatch({ type: "LOGIN_START" });
     try {
-      const response = await axios.patch(`${baseURL}/user/${localStorage.getItem("access_token")}/${id}`,
+      const response = await axios.patch(`${baseURL}/user/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))._id}`,
         userInfo
       );
       console.log(response.data);
@@ -70,44 +75,33 @@ const UserProfile = () => {
   };
 
   return (
-    <div className='user-profile-page'>
-      <div className="user-profile-wrapper">
-        <div className='user-profile'>
-          <div className="profile-picture">
-            {userInfo.profilePicture ? (
-              <label className='profilePicture-label' htmlFor='profilePicture'>
-                <img src={userInfo.profilePicture} alt="Profile" />
-              </label>
-
-            ) : (
-              <div className="default-profile-picture">
-                <label className='profilePicture-label' htmlFor='profilePicture'>Add Profile Picture</label>
-              </div>
-            )}
+    <div className='user-profile-page-container'>
+      <div className='user-profile-page'>
+        <div className='navbar'>
+          <div className='back-btn'>
+            <button className='back-btn' onClick={() => { navigate(-1) }}><Back color="black" /></button>
           </div>
-
-          <input className='profilePicture-input' name='profilePicture' id='profilePicture' type="file" onChange={handleProfilePictureChange} />
-
-          <div className="profile-info-wrapper">
-            <h2>{userInfo?.name}</h2>
-            <form className='profile-info'>
-              <label className='profile-info-label' htmlFor='name'>Name</label>
-              <input className='profile-info-input' value={userInfo?.name} onChange={handleChange} placeholder='Enter name' name='name' id='name' required />
-
-              <label className='profile-info-label' htmlFor='username'>Username</label>
-              <input className='profile-info-input' value={userInfo?.username} onChange={handleChange} placeholder='Enter username' name='username' id='username' required />
-
-
-              <label className='profile-info-label' htmlFor='email'>Email</label>
-              <input className='profile-info-input' value={userInfo?.email} placeholder='Enter email' name='email' id='email' readOnly />
-
-
-              <label className='profile-info-label' htmlFor='phone'>Phone</label>
-              <input className='profile-info-input' value={userInfo?.phone} onChange={handleChange} placeholder='Enter phone number' name='phone' id='phone' type='number' />
-            </form>
-
-            <button className='profile-info-update-btn' onClick={handleProfileUpdate}>Update Profile</button>
-            <button className='logout-btn' onClick={handleLogout}>Logout</button>
+        </div>
+        <div className='user-profile-img'>
+          <img src={userImage} alt='' />
+        </div>
+        <div className='username'>{userInfo.username}</div>
+        <div className='profile-options'>
+          <div className='profile-option'>
+            <ManageSubs color="white" />
+            <p className='profile-option-text'>Manage Subscription</p>
+          </div>
+          <div className='profile-option'>
+            <UserIcon color="white" />
+            <p className='profile-option-text'>Account Details</p>
+          </div>
+          <div className='profile-option'>
+            <LockIcon color="white" />
+            <p className='profile-option-text'>Change Password</p>
+          </div>
+          <div className='profile-option' onClick={()=>handleLogout()}>
+            <Logout color="white" />
+            <p className='profile-option-text'>Log Out</p>
           </div>
         </div>
       </div>

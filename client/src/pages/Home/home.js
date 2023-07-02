@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './home.css'
 import homepglogo from '../../assets/home-page-logo.png'
 import HomeLogo from '../../assets/svg/home-logo';
@@ -9,29 +9,18 @@ import Presentation from '../../assets/svg/presentation';
 import SearchLogo from '../../assets/svg/search';
 import Book from '../../assets/svg/book';
 import Present from '../../assets/svg/present';
-import NotificationLogo from '../../assets/svg/notification';
-import StartConversation from '../../assets/svg/startConversation';
-import { ReactComponent as UpComingSessions } from '../../assets/svg/upcomingSessions.svg';
-import { baseURL } from '../../baseURL/baseURL';
-import useFetch from '../../hooks/useFetch';
-import SessionSlider from '../../components/Slider/slider';
-import sliderImage from '../../assets/default-slider-img.png'
-import Card from '../../components/HomePageCard/card';
-import { useNavigate } from 'react-router-dom';
+import Dashboard from '../Dashboard/dashboard';
+import Meditate from '../Meditate/meditate';
+import Therapy from '../Therapy/therapy';
+import Assesment from '../Assesment/assesment';
+import Chat from '../Chat/chat';
+import Journaling from '../Journaling/journaling';
+import Rewards from '../Rewards/rewards';
 
 
 const Home = () => {
-  const navigate = useNavigate();
-  const [userInfo, setUserInfo] = useState({});
 
-
-  const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))?._id}`);
-  useEffect(() => {
-    setUserInfo(data);
-
-  }, [data]);
   const [selectedPage, setSelectedPage] = useState(1);
-  const [progress, setProgress] = useState(12);
   const onSelect = (page) => {
     setSelectedPage(page);
   }
@@ -87,61 +76,33 @@ const Home = () => {
         <div ></div>
         <div className='PrivacyText'>Privacy Policy</div>
       </div>
-      <div className='home-page'>
-        <div className='navbar'>
-          <div className='nav-text'>
-            <div className='greeting-container'>
-              <p className='home-main-heading'>Good Morning,  </p>
-              <p className='home-main-heading' style={{ fontWeight: "600" }}>{userInfo.username} </p>
-            </div>
-            <p className='home-sub-heading'>"Your mental health is a priority. Take care of yourself, unplug, recharge, and remember that you are worth it."</p>
-          </div>
-          <div className='nav-buttons'>
-            <div className='notification-button'><NotificationLogo color="#111111" /></div>
-            <div className='user-avatar'>
-              <img src={sliderImage} alt='' className='user-avatar' />
-            </div>
-          </div>
-        </div>
-        <div className='home-page-tiles'>
-          <div className="home-page-tile" onClick={() => { navigate('/chats'); }}>
-            <StartConversation className="home-page-tile" />
-          </div>
-          <div className='home-page-tile tile-container'>
-            <UpComingSessions />
-            <div id="carousel">
-              <div>
-                <SessionSlider />
-              </div>
-            </div>
-            <div id="progress">
-              <div className='empty-progress-bar'>
-                <div className='filled-progress-bar' style={{ width: `${1.8 * progress}px` }}>
-                </div>
-                <p id='percentage'>{progress}%</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div className='home-page-heading'>Today’s Dailies</div>
-        <div></div>
-        <div></div>
-        <div className='home-page-cards'>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <CorrectPage selectedPage={selectedPage} setSelectedPage={setSelectedPage} />
     </div>
   )
 }
 
 export default Home
+
+
+
+const CorrectPage = ({ selectedPage, setSelectedPage }) => {
+  switch (selectedPage) {
+    case 1:
+      return <Dashboard setSelectedPage={setSelectedPage} />;
+    case 2:
+      return <Meditate />;
+    case 3:
+      return <Therapy />;
+    case 4:
+      return <Assesment setSelectedPage={setSelectedPage} />;
+    case 5:
+      return <Chat />;
+    case 6:
+      return <Journaling />;
+    case 7:
+      return <Rewards />;
+
+    default:
+      return <div style={{ width: "100%" }}></div>
+  }
+}

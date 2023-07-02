@@ -8,6 +8,7 @@ import http from "http";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import questionsRoutes from "./routes/questions.js";
+import chatRoutes from "./routes/chat.js";
 
 import { errorHandler } from "./utils/errorHandler.js";
 import { ConnectDB } from "./utils/mongoDB.js";
@@ -30,6 +31,7 @@ app.use(Express.json());
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/questions', questionsRoutes);
+app.use('/api/v1/chat', chatRoutes);
 
 app.use(errorHandler);
 

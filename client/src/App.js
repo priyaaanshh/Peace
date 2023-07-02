@@ -6,7 +6,7 @@ import UserProfile from './pages/User/user'
 import OnBoarding from './pages/OnBoarding/onBoarding'
 import OnBoardingSurvey from './pages/OnBoarding/onBoardingSurvey'
 import Home from './pages/Home/home'
-import Chat from './pages/Chat/chat'
+// import Chat from './pages/Chat/chat'
 
 const App = () => {
   return (
@@ -15,12 +15,11 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="/chats" element={<Chat />} />
 
         <Route path="/onBoarding" element={<OnBoarding />} />
         <Route path="/onBoarding/continue" element={<OnBoardingSurvey />} />
 
-        <Route path="/user/:id" element={<UserProfile />} />
+        <Route path="/user" element={<UserProfile />} />
       </Routes>
     </BrowserRouter>
   )

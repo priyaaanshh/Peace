@@ -7,6 +7,7 @@ export const createNewChat = async (req, res, next) => {
             chatId,
             members,
             isGroupChat,
+            messages: []
         });
         const savedChat = await newChat.save();
         return res.status(201).json({ chat: savedChat });
@@ -16,9 +17,11 @@ export const createNewChat = async (req, res, next) => {
 }
 
 export const getAllMessages = async (req, res, next) => {
-    const { chatId } = req.body;
+    const { chatId } = req.query;
+    // console.log(`chatId searched: ${chatId}`);
+    // console.log(req.query);
     try {
-        const chat = await Chat.findById(chatId);
+        const chat = await Chat.findOne({ chatId: chatId });
 
         if (!chat) {
             return res.status(404).json({ message: "Chat not found" });
@@ -33,16 +36,18 @@ export const getAllMessages = async (req, res, next) => {
     }
 }
 export const updateMessages = async (req, res, next) => {
-    const { chatId, messages } = req.body;
+
+    console.log("chatId = ",req.query.chatId);
     try {
-        const chat = await Chat.findById(chatId);
+        const chat = await Chat.findOne({ chatId: req.query.chatId });
 
         if (!chat) {
-            return res.status(404).json({ message: "Chat not found" });
+            return res.status(404).json({ message: "Chat not found while updation" });
         }
-        chat.messages = messages;
 
-        await chat.save();
+        await Chat.findByIdAndUpdate(chat._id.toString(),req.body);
+        console.log("id: ", chat._id.toString());
+        console.log(req.body);
 
         return res.status(200).json({ message: "Message added successfully" });
     } catch (error) {
