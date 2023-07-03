@@ -4,14 +4,16 @@
     justify-content: center;
     align-items: center;
     font-family: "Poppins";
-
     background-color: #fff;
+    padding: 16px;
+    padding-bottom: 0px;
     border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
 .calendar {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     padding: 10px;
 }
 
@@ -23,22 +25,26 @@
 }
 
 .month-picker {
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
+    color: #000;
+    font-size: 18.833px;
+    font-family: Poppins;
+    font-weight: 900;
 }
 
 .year-picker {
     display: flex;
     align-items: center;
+    gap: 12px;
 }
 
 .year-change {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 24px;
-    width: 24px;
+    font-size: 24px;
+    font-weight: 300;
+    height: 28px;
+    width: 28px;
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
@@ -61,6 +67,7 @@
     margin-bottom: 10px;
     font-weight: bold;
     text-align: center;
+    margin-top: 12px;
     width: 100%;
 }
 
@@ -80,6 +87,7 @@
     justify-content: center;
     align-items: center;
     height: 30px;
+    border-radius: 10px;
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
@@ -90,11 +98,10 @@
 }
 
 .current-date {
-    background-color: #9796f0;
+    background-color: #113F67;
     color: #fff;
-    border-radius: 50%;
-    height: 30px;
-    width: 30px;
+    /* height: 30px;
+    width: 30px; */
 }
 
 .current-time {
@@ -106,30 +113,44 @@
 .current-time span {
     display: block;
 }
-.calendar-bottom-container{
+
+.calendar-bottom-container {
     display: flex;
     align-items: start;
     justify-content: start;
     width: 100%;
 }
+
 .calendar-bottom {
     display: flex;
     align-items: center;
-    width: 80%;
-    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 12px;
+    gap: 20px;
+    justify-content: space-evenly;
     height: max-content;
-    font-family: Dubai Light, Century Gothic;
+}
+
+.current-time {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    margin-bottom: 12px;
+    flex-direction: column;
 }
 
 .Today-text {
     font-family: Microsoft JhengHei UI;
     font-size: 1.4rem;
-    padding-right: 5%;
-    border-right: 3px solid #9796f0;
+    padding-right: 5%;color: #3b3b3b;
+    border-right: 3px solid #113F67;
 }
-.time{
+
+.time {
     font-size: 1.5rem;
 }
-.date{
-    font-size: 1.05rem;
+
+.date {
+    font-size: 1.05rem;color: #3b3b3b;
 }

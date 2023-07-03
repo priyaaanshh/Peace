@@ -113,15 +113,18 @@ const CalendarComponent = () => {
                     </div>
                 </div>
             </div>
-            <div className='calendar-bottom-container'>
-                <div className='calendar-bottom'>
-                <div className='Today-text'>TODAY</div>
-                <div className="current-time">
-                        <span className='time'>{showTime}</span>
-                    <span className='date'>{todayFormattedDate}</span>
+            {showTime !== "" ? <>
+                <div className='partition-line' style={{ border: "1px solid #DADADA" }}></div>
+                <div className='calendar-bottom-container'>
+                    <div className='calendar-bottom'>
+                        <div className='Today-text'>TODAY</div>
+                        <div className="current-time">
+                            <span className='time'>{showTime}</span>
+                            <span className='date'>{todayFormattedDate}</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
+            </> : <></>}
         </div>
     );
 };
