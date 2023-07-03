@@ -14,6 +14,7 @@ import LockIcon from '../../assets/svg/lock';
 
 const UserProfile = () => {
   const [userInfo, setUserInfo] = useState({});
+  const navigate = useNavigate();
 
   const { dispatch } = useContext(AuthContext);
   const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))._id}`)
@@ -53,7 +54,6 @@ const UserProfile = () => {
     }
   };
 
-  const navigate = useNavigate();
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.setItem("access_token", null);

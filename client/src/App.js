@@ -6,7 +6,7 @@ import UserProfile from './pages/User/user'
 import OnBoarding from './pages/OnBoarding/onBoarding'
 import OnBoardingSurvey from './pages/OnBoarding/onBoardingSurvey'
 import Home from './pages/Home/home'
-// import Chat from './pages/Chat/chat'
+import DoctorProfile from './pages/DoctorProfile/doctorProfile'
 
 const App = () => {
   return (
@@ -18,6 +18,8 @@ const App = () => {
 
         <Route path="/onBoarding" element={<OnBoarding />} />
         <Route path="/onBoarding/continue" element={<OnBoardingSurvey />} />
+
+        <Route path="/therapy/appointment" element={<DoctorProfile />} />
 
         <Route path="/user" element={<UserProfile />} />
       </Routes>

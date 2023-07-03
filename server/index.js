@@ -15,8 +15,6 @@ import { ConnectDB } from "./utils/mongoDB.js";
 
 dotenv.config();
 const app = Express();
-// const server = http.createServer(app);
-// const io = new Server(server);
 
 ConnectDB();
 

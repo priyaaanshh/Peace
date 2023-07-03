@@ -1,11 +1,13 @@
 import { Component } from "react";
 import Slider from "react-slick";
 import SliderTile from "./sliderTile";
+
+
 export default class SessionSlider extends Component {
     render() {
         const settings = {
             className: "center",
-            dots:true,
+            dots: true,
             centerMode: true,
             infinite: true,
             centerPadding: "0px",

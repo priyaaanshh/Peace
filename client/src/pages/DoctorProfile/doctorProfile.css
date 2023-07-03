@@ -1,0 +1,377 @@
+.doctorProfilePage {
+    position: relative;
+}
+
+.doctorProfileBG {
+    background-image: linear-gradient(90deg, #979797a5, #97979775);
+    gap: 0px;
+    align-items: center;
+}
+
+.doctorProfile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1300px;
+}
+
+.doctorName {
+    color: #113F67;
+    font-size: 24px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    margin: 0;
+    margin-top: 16px;
+}
+
+.doctorProffesion {
+    color: #113F67;
+    font-size: 20px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.4px;
+    margin: 0;
+}
+
+.doctorDetailsRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    max-width: 600px;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.row-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin: 5px;
+    width: 140px;
+    height: 100px;
+    border-radius: 17.442px;
+    background: #FFF;
+    box-shadow: 0px 0px 20.930233001708984px 0px rgba(0, 0, 0, 0.12);
+}
+
+.detail-sub-heading {
+    color: #979797;
+    font-size: 20px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.419px;
+}
+
+.detail-heading {
+    color: #000;
+    font-size: 20px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.419px;
+}
+
+.doctor-detail-text-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1300px;
+    border-radius: 20px;
+    background: #FFF;
+    margin-top: 16px;
+}
+
+.doctor-detail-text-box>p {
+    width: 90%;
+    margin: 18px;
+}
+
+.reviewHeading {
+    margin-top: 36px;
+    width: 100%;
+    color: #113F67;
+    font-size: 24px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.48px;
+}
+
+.customerReview {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 16px;
+    gap: 12px;
+}
+
+.customerReview-box>p {
+    font-size: 18px;
+    margin-right: 32px;
+}
+
+.customerImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    object-fit: cover;
+    border-radius: 20px;
+    width: 150px;
+    height: 150px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cutromerNameColumn {
+    display: flex;
+    width: max-content;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin-left: 8px;
+    margin-right: 12px;
+}
+
+.cutromerNameColumn>p {
+    color: #000;
+    font-size: 18px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.36px;
+}
+
+.doctorProfile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    margin-top: 36px;
+    margin-bottom: 36px;
+    border-radius: 20px;
+    border: none;
+    background: #113F67;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
+
+    color: #FFF;
+    font-size: 24px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.session-book-page-container {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.74);
+    backdrop-filter: blur(20px);
+    align-items: center;
+    overflow-y: auto;
+}
+
+.session-book-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0px 20px;
+}
+
+.session-book-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 900px;
+    width: 100%;
+    height: 100%;
+    margin: 20px;
+    border-radius: 20px;
+    background: #fff;
+}
+
+.card-Box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0px 8px;
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 700px;
+
+}
+
+.date-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 15%;
+}
+
+.date-pick-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 50px;
+
+    margin: 10px;
+    padding: 2%;
+    width: 60px;
+    position: relative;
+    text-align: center;
+    color: #FFF;
+
+    border-radius: 14.636px;
+    background: #113F67;
+    box-shadow: 0px 0px 17.56268310546875px 0px rgba(0, 0, 0, 0.12);
+}
+
+.date-pick-tile>p {
+    margin: 0;
+
+    font-size: 18px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.partition-line {
+    display: flex;
+    border: 2px solid #DADADA;
+    border-radius: 50px;
+    height: 0;
+    width: 95%;
+}
+
+.session-card-slot {
+    margin: 0;
+    width: 98%;
+    color: #979797;
+    font-size: 20.49px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.slot-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+
+    color: #000;
+    font-size: 18px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.351px;
+
+    border-radius: 14.636px;
+    background: #FFF;
+    box-shadow: 0px 0px 17.56268310546875px 0px rgba(0, 0, 0, 0.12);
+
+    cursor: pointer;
+}
+
+.selected-slot {
+    font-weight: bold;
+}
+
+.doctorPage-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 80px;
+
+    /* margin-top: 16px; */
+
+    border-radius: 20px;
+    background: #113F67;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
+
+    color: #FFF;
+    font-size: 24px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.card-Box-booked-slot-details {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+
+    color: #000;
+    font-size: 28px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.card-Box-booked-slot-details>div {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.card-Box-booked-slot-details>div>p {
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .doctor-detail-text-box {
+        flex-wrap: wrap;
+    }
+
+    .customerReview-box>p {
+        margin-right: 0px;
+    }
+
+    .customerReview {
+        width: 100%;
+    }
+
+        .card-Box-booked-slot-details {
+            font-size: 20px;
+            padding: 0 12px;
+        }
+}

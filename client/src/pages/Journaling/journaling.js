@@ -5,6 +5,7 @@ import useFetch from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
 import NavButtons from '../../components/NavButtons/navButtons';
 import SearchBar from '../../components/SearchBar/searchBar';
+import CalendarComponent from '../../components/Calendar/calendar';
 
 
 const Journaling = () => {
@@ -26,8 +27,11 @@ const Journaling = () => {
         <SearchBar />
         <NavButtons />
       </div>
+        <CalendarComponent/>
     </div>
   )
 }
 
 export default Journaling
+
+
