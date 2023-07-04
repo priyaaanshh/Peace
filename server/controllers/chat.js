@@ -18,8 +18,6 @@ export const createNewChat = async (req, res, next) => {
 
 export const getAllMessages = async (req, res, next) => {
     const { chatId } = req.query;
-    // console.log(`chatId searched: ${chatId}`);
-    // console.log(req.query);
     try {
         const chat = await Chat.findOne({ chatId: chatId });
 

@@ -8,8 +8,11 @@ import Card from '../../components/HomePageCard/card';
 import './dashboard.css'
 import { useNavigate } from 'react-router-dom';
 import NavButtons from '../../components/NavButtons/navButtons';
+import { Sling as Hamburger } from 'hamburger-react'
 
 const Dashboard = ({ setSelectedPage }) => {
+    const [isOpen, setOpen] = useState(false)
+
     const navigate = useNavigate();
     const [userInfo, setUserInfo] = useState({});
     const [progress, setProgress] = useState(12);
@@ -23,6 +26,7 @@ const Dashboard = ({ setSelectedPage }) => {
     return (
         <div className='home-page'>
             <div className='navbar'>
+                < Hamburger toggled={isOpen} toggle={setOpen} />
                 <div className='nav-text'>
                     <div className='greeting-container'>
                         <p className='home-main-heading'>Good Morning,  </p>
@@ -33,7 +37,7 @@ const Dashboard = ({ setSelectedPage }) => {
                 <NavButtons />
             </div>
             <div className='home-page-tiles'>
-                <div className="home-page-tile" onClick={() => { setSelectedPage(3)}}>
+                <div className="home-page-tile" onClick={() => { setSelectedPage(3) }}>
                     <StartConversation className="home-page-tile" />
                 </div>
                 <div className='home-page-tile tile-container'>
