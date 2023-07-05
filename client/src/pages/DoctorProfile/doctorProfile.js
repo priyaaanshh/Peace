@@ -11,7 +11,7 @@ const todayDate = new Date();
 const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
 const todayFormattedDate = todayDate.toLocaleDateString('en-US', options);
 let selectedDate = todayFormattedDate;
-const username = JSON.parse(localStorage.getItem("user")).username;
+const username = JSON.parse(localStorage.getItem("user"))?.username;
 const slots = [
     "",
     "07:00 AM",
@@ -172,7 +172,7 @@ const DoctorProfile = () => {
                     </div>
                     <div className='session-book-card '>
                         <div className='card-Box-booked-slot-details'>
-                            <p>Dear {username},</p>
+                            <p>Dear {username?username:""},</p>
                             <p>We've booked you a visit at XYZ Clinic</p>
                             <div>
                                 <p> Here are the details: Doctor/Staff:</p>

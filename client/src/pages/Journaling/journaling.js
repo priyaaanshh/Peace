@@ -28,7 +28,7 @@ const Journaling = () => {
         const getNoteResponse = await axios.get(`${baseURL}/notes/getNote`, {
           params: {
             date: selectedNoteDate,
-            user: userInfo.username,
+            user: userInfo?.username,
           },
         });
         // console.log(getNoteResponse.data);
@@ -63,7 +63,7 @@ const Journaling = () => {
         // console.log("create")
         const createdNote = await axios.post(`${baseURL}/notes/createNote`, {
           date: selectedNoteDate,
-          user: userInfo.username,
+          user: userInfo?.username,
           note: note, // Use the note state value
         });
         // console.log(createdNote);

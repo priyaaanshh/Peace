@@ -20,7 +20,7 @@ import Rewards from '../Rewards/rewards';
 
 const Home = () => {
 
-  const [selectedPage, setSelectedPage] = useState(1);
+  const [selectedPage, setSelectedPage] = useState(5);
   const onSelect = (page) => {
     setSelectedPage(page);
   }

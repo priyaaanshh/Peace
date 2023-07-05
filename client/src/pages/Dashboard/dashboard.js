@@ -30,7 +30,7 @@ const Dashboard = ({ setSelectedPage }) => {
                 <div className='nav-text'>
                     <div className='greeting-container'>
                         <p className='home-main-heading'>Good Morning,  </p>
-                        <p className='home-main-heading' style={{ fontWeight: "600" }}>{userInfo.username} </p>
+                        <p className='home-main-heading' style={{ fontWeight: "600" }}>{userInfo?.username} </p>
                     </div>
                     <p className='home-sub-heading'>"Your mental health is a priority. Take care of yourself, unplug, recharge, and remember that you are worth it."</p>
                 </div>

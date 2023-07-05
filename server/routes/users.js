@@ -5,6 +5,10 @@ const router = Express.Router();
 
 // READ One by Id
 router.get('/userInfo/:access_token/:id', verifyUser, getUser);
+router.get('/getUser/:id',getUser);
+
+//Read all users
+router.get('/getUsers', getUsers); 
 
 // UPDATE
 router.patch('/:access_token/:id', verifyUser, updateUser); //Only user can update it's account
@@ -18,7 +22,6 @@ router.post('/addNoteToUser', addNoteToUser);
 router.post('/addAppointmentWithDoctor', addAppointmentWithDoctor);
 
 //Only admin can access
-router.get('/:access_token', verifyAdmin, getUsers); 
 router.get('/totalusers/:access_token', verifyAdmin, getTotalUserCount);
 router.get('/newusers/:access_token', verifyAdmin, getCurrentMonthNewUserCount);
 

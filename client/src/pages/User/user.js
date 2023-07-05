@@ -6,7 +6,6 @@ import { AuthContext } from '../../Context/authContext';
 import { useNavigate } from 'react-router-dom';
 import { baseURL } from '../../baseURL/baseURL';
 import useFetch from '../../hooks/useFetch';
-import userImage from '../../assets/dr_image.png'
 import ManageSubs from '../../assets/svg/credit card';
 import UserIcon from '../../assets/svg/user';
 import Logout from '../../assets/svg/exit';
@@ -19,6 +18,7 @@ const UserProfile = () => {
   const { dispatch } = useContext(AuthContext);
   const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))._id}`)
   useEffect(() => {
+    console.log(data);
     setUserInfo(data);
   }, [data])
 
@@ -82,10 +82,22 @@ const UserProfile = () => {
             <button className='back-btn' onClick={() => { navigate(-1) }}><Back color="black" /></button>
           </div>
         </div>
-        <div className='user-profile-img'>
-          <img src={userImage} alt='' />
+        <div className="profile-picture">
+          {userInfo.profilePicture ? (
+            <label className='profilePicture-label' htmlFor='profilePicture'>
+              <img src={userInfo.profilePicture} alt="Profile" />
+            </label>
+
+          ) : (
+            <div className="default-profile-picture">
+              <label className='profilePicture-label' htmlFor='profilePicture'>Add Profile Picture</label>
+            </div>
+          )}
         </div>
-        <div className='username'>{userInfo.username}</div>
+
+        <input className='profilePicture-input' name='profilePicture' id='profilePicture' type="file" onChange={handleProfilePictureChange} />
+        
+        <div className='username'>{userInfo?.username}</div>
         <div className='profile-options'>
           <div className='profile-option'>
             <ManageSubs color="white" />
@@ -99,7 +111,7 @@ const UserProfile = () => {
             <LockIcon color="white" />
             <p className='profile-option-text'>Change Password</p>
           </div>
-          <div className='profile-option' onClick={()=>handleLogout()}>
+          <div className='profile-option' onClick={() => handleLogout()}>
             <Logout color="white" />
             <p className='profile-option-text'>Log Out</p>
           </div>

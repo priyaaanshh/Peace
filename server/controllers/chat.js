@@ -1,51 +1,86 @@
 import Chat from "../models/chat.js";
+import User from "../models/user.js";
 
 export const createNewChat = async (req, res, next) => {
-    const { chatId, members, isGroupChat } = req.body;
+    // console.log(req.params, req.query, req.body, "createNewChat");
+
+    const { members, isGroupChat } = req.body;
     try {
+        if (!isGroupChat) {
+            const foundChat = await Chat.findOne({ members: { $all: members } });
+            if (foundChat) {
+                if (!(members[0] === members[1] && foundChat.members[0] !== foundChat.members[1])) { 
+                    return res.status(200).json(foundChat);
+                }
+                
+            }
+        }
         const newChat = new Chat({
-            chatId,
             members,
             isGroupChat,
             messages: []
         });
         const savedChat = await newChat.save();
-        return res.status(201).json({ chat: savedChat });
+        return res.status(201).json(savedChat);
     } catch (error) {
         next(error);
     }
 }
 
 export const getAllMessages = async (req, res, next) => {
-    const { chatId } = req.query;
+    const { id } = req.query;
     try {
-        const chat = await Chat.findOne({ chatId: chatId });
+        const chat = await Chat.findOne(id);
 
         if (!chat) {
             return res.status(404).json({ message: "Chat not found" });
         }
 
-        // Retrieve all messages from the chat
-        const messages = chat.messages;
-
-        return res.status(200).json({ messages });
+        return res.status(200).json(chat);
     } catch (error) {
         next(error);
     }
 }
-export const updateMessages = async (req, res, next) => {
 
-    console.log("chatId = ",req.query.chatId);
+export const getAllChats = async (req, res, next) => {
     try {
-        const chat = await Chat.findOne({ chatId: req.query.chatId });
+        const { member } = req.query;
+
+        const chats = await Chat.find({
+            members: member,
+            isGroupChat: false,
+        }).sort({ updatedAt: -1 });
+
+        const friendUsers = [];
+        for (let i = 0; i < chats.length; i++) {
+            const chat = chats[i];
+            const id = chat?.members[0] === member ? chat?.members[1] : chat?.members[0];
+            const user = await User.findById(id);
+            friendUsers.push({chat:chat,user:user});
+        }
+
+        res.json(friendUsers);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const updateMessages = async (req, res, next) => {
+    const { id, message } = req.body;
+    console.log(message)
+    // console.log(req.body);
+    try {
+        const chat = await Chat.findById(id);
 
         if (!chat) {
             return res.status(404).json({ message: "Chat not found while updation" });
         }
+        // const chat = await Chat.findByIdAndUpdate(id, messages, { new: true });
 
-        await Chat.findByIdAndUpdate(chat._id.toString(),req.body);
-        console.log("id: ", chat._id.toString());
-        console.log(req.body);
+        chat.messages.push(message);
+        await chat.save();
+
+        // console.log(chat);
 
         return res.status(200).json({ message: "Message added successfully" });
     } catch (error) {

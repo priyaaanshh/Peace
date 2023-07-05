@@ -14,12 +14,13 @@
     align-items: center;
     justify-content: start;
     flex-direction: column;
-    background-image: linear-gradient(90deg, #393939b5,#3939398d);
+    background-image: linear-gradient(90deg, #393939b5, #3939398d);
     width: 100%;
     height: 100%;
     gap: 20px;
     padding-left: 28px;
-    padding-right: 28px;overflow: auto;
+    padding-right: 28px;
+    overflow: auto;
 }
 
 .back-btn {
@@ -33,6 +34,68 @@
     height: 60px;
     width: 60px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.user-profile-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 65px;
+    margin-bottom: 25px;
+    padding: 15px;
+    width: 100%;
+    max-width: 700px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.default-profile-picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #113f67;
+    color: #fff;
+    font-size: 20px;
+}
+
+.profilePicture-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
 }
 
@@ -55,6 +118,10 @@
     border-radius: 40px;
     overflow: hidden;
     object-fit: cover;
+}
+
+.profilePicture-input {
+    display: none;
 }
 
 .username {
