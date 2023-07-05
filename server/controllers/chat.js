@@ -4,18 +4,19 @@ import User from "../models/user.js";
 export const createNewChat = async (req, res, next) => {
     // console.log(req.params, req.query, req.body, "createNewChat");
 
-    const { members, isGroupChat } = req.body;
+    const { members, isGroupChat, groupName } = req.body;
     try {
         if (!isGroupChat) {
             const foundChat = await Chat.findOne({ members: { $all: members } });
             if (foundChat) {
-                if (!(members[0] === members[1] && foundChat.members[0] !== foundChat.members[1])) { 
+                if (!(members[0] === members[1] && foundChat.members[0] !== foundChat.members[1])) {
                     return res.status(200).json(foundChat);
                 }
-                
+
             }
         }
         const newChat = new Chat({
+            groupName,
             members,
             isGroupChat,
             messages: []
@@ -44,22 +45,32 @@ export const getAllMessages = async (req, res, next) => {
 
 export const getAllChats = async (req, res, next) => {
     try {
-        const { member } = req.query;
+        const { member, isGroupChat } = req.query;
+        // console.log(req.query);
 
-        const chats = await Chat.find({
-            members: member,
-            isGroupChat: false,
-        }).sort({ updatedAt: -1 });
+        if (isGroupChat === "false") {
+            const chats = await Chat.find({
+                members: member,
+                isGroupChat: false,
+            }).sort({ updatedAt: -1 });
 
-        const friendUsers = [];
-        for (let i = 0; i < chats.length; i++) {
-            const chat = chats[i];
-            const id = chat?.members[0] === member ? chat?.members[1] : chat?.members[0];
-            const user = await User.findById(id);
-            friendUsers.push({chat:chat,user:user});
+            const friendUsers = [];
+            for (let i = 0; i < chats.length; i++) {
+                const chat = chats[i];
+                const id = chat?.members[0] === member ? chat?.members[1] : chat?.members[0];
+                const user = await User.findById(id);
+                friendUsers.push({ chat: chat, user: user });
+            }
+
+            return res.status(200).json(friendUsers);
+            console.log(friendUsers);
+        } else {
+            const groupChats = await Chat.find({
+                members: member,
+                isGroupChat: true,
+            }).sort({ updatedAt: -1 });
+            return res.status(200).json(groupChats);
         }
-
-        res.json(friendUsers);
     } catch (error) {
         next(error);
     }

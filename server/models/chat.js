@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const ChatSchema = new mongoose.Schema(
     {
+        groupName:String,
         members: [
             {
                 type: String,
