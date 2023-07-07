@@ -4,7 +4,7 @@ const GetRewards = ({ className }) => {
     return (
         <svg className={className} viewBox="0 0 720 310" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d_369_2448)">
-                <g clip-path="url(#clip0_369_2448)">
+                <g clipPath="url(#clip0_369_2448)">
                     <rect width="733" height="310" rx="20" fill="#C5E1E7" />
                     <path d="M80.018 58.461L71.797 60.3337L63.576 62.2064L68.0614 69.3337L72.5467 76.4611L65.401 71.9846L58.2596 67.508L56.3832 75.7128L54.5069 83.9176L52.6305 75.7128L50.7541 67.508L43.6127 71.9846L36.4713 76.4611L40.9566 69.3337L45.4419 62.2064L37.221 60.3337L29 58.461L37.221 56.5883L45.4419 54.7156L40.9566 47.5882L36.4713 40.4566L43.6127 44.9331L50.7541 49.4096L52.6305 41.2048L54.5069 33L56.3832 41.2048L58.2596 49.4096L65.401 44.9331L72.5467 40.4566L68.0614 47.5882L63.576 54.7156L71.797 56.5883L80.018 58.461Z" fill="#113F67" stroke="black" strokeWidth="1.9671" strokeMiterlimit="10" strokeLinecap="round" />
                     <path d="M747.018 2.46096L738.797 4.33365L730.576 6.20635L735.061 13.3337L739.547 20.4611L732.401 15.9846L725.26 11.508L723.383 19.7128L721.507 27.9176L719.63 19.7128L717.754 11.508L710.613 15.9846L703.471 20.4611L707.957 13.3337L712.442 6.20635L704.221 4.33365L696 2.46096L704.221 0.588266L712.442 -1.28443L707.957 -8.41179L703.471 -15.5434L710.613 -11.0669L717.754 -6.5904L719.63 -14.7952L721.507 -23L723.383 -14.7952L725.26 -6.5904L732.401 -11.0669L739.547 -15.5434L735.061 -8.41179L730.576 -1.28443L738.797 0.588266L747.018 2.46096Z" fill="#113F67" stroke="black" strokeWidth="1.9671" strokeMiterlimit="10" strokeLinecap="round" />
@@ -19,7 +19,7 @@ const GetRewards = ({ className }) => {
             </g>
             <defs>
                 <filter id="filter0_d_369_2448" x="-12" y="-12" width="757" height="334" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feFlood floodOpacity="0" result="BackgroundImageFix" />
                     <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                     <feOffset />
                     <feGaussianBlur stdDeviation="6" />

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './therapy.css'
+import '../Home/home.css'
+import Sidebar from '../../components/SideBar/sidebar';
 import { baseURL } from '../../baseURL/baseURL';
 import useFetch from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
-import NavButtons from '../../components/NavButtons/navButtons';
-import SearchBar from '../../components/SearchBar/searchBar';
 import BookCard from '../../components/DoctorBookCard/bookCard';
+import Navbar from '../../components/Navbar/navbar';
 
 
 const Therapy = () => {
@@ -19,14 +20,11 @@ const Therapy = () => {
 
 
   return (
-    <div className='home-page'>
-      <div className='navbar'>
-        <div className='nav-text'>
-          <p className='home-main-heading' style={{ fontWeight: "600" }}>Therapy Session </p>
-        </div>
-        <SearchBar />
-        <NavButtons />
-      </div>
+    <div className='home'>
+      <Sidebar Page={"Therapy Session"} />
+      <div className='home-page'>
+
+        <Navbar mainHeading={"Therapy Session"} searchBar={true} />
       <div className='home-page-heading'>Top  psychiatrist</div>
       <div className='home-page-cards'>
         <BookCard />
@@ -38,6 +36,7 @@ const Therapy = () => {
         <BookCard />
         <BookCard />
         <BookCard />
+        </div>
       </div>
     </div>
   )

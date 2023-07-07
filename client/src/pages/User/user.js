@@ -16,11 +16,14 @@ const UserProfile = () => {
   const navigate = useNavigate();
 
   const { dispatch } = useContext(AuthContext);
-  const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))._id}`)
+  const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))?._id}`)
   useEffect(() => {
     console.log(data);
     setUserInfo(data);
   }, [data])
+  useEffect(() => {
+    console.log(userInfo)
+  }, [userInfo])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,6 +52,8 @@ const UserProfile = () => {
         ...prevData,
         [e.target.name]: url,
       }))
+      console.log("updated UserInfo");
+      handleProfileUpdate();
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +68,7 @@ const UserProfile = () => {
   const handleProfileUpdate = async () => {
     dispatch({ type: "LOGIN_START" });
     try {
-      const response = await axios.patch(`${baseURL}/user/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))._id}`,
+      const response = await axios.patch(`${baseURL}/user/${localStorage.getItem("access_token")}/${userInfo?._id}`,
         userInfo
       );
       console.log(response.data);

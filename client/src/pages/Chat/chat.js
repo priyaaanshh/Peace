@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import ScrollToBottom from "react-scroll-to-bottom";
 import socketIo from "socket.io-client";
 import './chat.css'
+import '../Home/home.css'
+import Sidebar from '../../components/SideBar/sidebar';
 import { baseURL } from '../../baseURL/baseURL';
 import axios from 'axios';
-import NavButtons from '../../components/NavButtons/navButtons';
 import Back from '../../assets/svg/back';
 import SearchBar from '../../components/SearchBar/searchBar';
-import {ReactComponent as SendBtn } from '../../assets/svg/Vector.svg'
+import { ReactComponent as SendBtn } from '../../assets/svg/Vector.svg'
+import Navbar from '../../components/Navbar/navbar';
 
 
 
@@ -259,168 +261,163 @@ const Chat = () => {
 
 
     return (
-        <div className='home-page'>
-            <div className='navbar'>
-                <div className='nav-text'>
-                    <p className='home-main-heading' style={{ fontWeight: "600" }}>Social Forum </p>
-                </div>
-                <NavButtons />
-            </div>
+        <div className='home'>
+            <Sidebar Page={"Social Forum"} />
+            <div className='home-page'>
+
+                <Navbar mainHeading={"Social Forum"} />
+
+                <div className='social-forum-page-row'>
+                    <div className='chat-users-container'>
+                        <div className='chat-users-container-nav'>
+                            {addFriendPage === false ? <button className='chat-users-add-friend-btn' onClick={() => { setAddFriendPage(true); setOpenCreateGroup(false); }}>Add friends</button> :
+                                <button className='back-btn'
+                                    style={{ backgroundColor: "#C0B1D2" }}
+                                    onClick={() => { setAddFriendPage(false) }}><Back color="black" /></button>}
+                            <SearchBar onChats={true}/>
+                        </div>
+                        {addFriendPage === false ? <div className='chat-users-container-btn-row'>
+                            <button className='chat-users-btn' onClick={() => { setOpenChat(true); setOpenCreateGroup(false); }}>Friends</button>
+                            <button className='chat-users-btn' onClick={() => { setOpenChat(false); }}>Group</button>
+                        </div>
+
+                            : <div className='chat-users-container-btn-row'>
+                                <button className='chat-users-btn'>Add Friends</button>
+                            </div>}
+                        <div className='chat-users-seperator-line'></div>
+
+                        <div className='chat-users-msg-column-container'>
 
 
-
-
-
-            <div className='social-forum-page-row'>
-                <div className='chat-users-container'>
-                    <div className='chat-users-container-nav'>
-                        {addFriendPage === false ? <button className='chat-users-add-friend-btn' onClick={() => { setAddFriendPage(true); setOpenCreateGroup(false); }}>Add friends</button> :
-                            <button className='back-btn'
-                                style={{ backgroundColor: "#C0B1D2" }}
-                                onClick={() => { setAddFriendPage(false) }}><Back color="black" /></button>}
-                        <SearchBar />
-                    </div>
-                    {addFriendPage === false ? <div className='chat-users-container-btn-row'>
-                        <button className='chat-users-btn' onClick={() => { setOpenChat(true); setOpenCreateGroup(false); }}>Friends</button>
-                        <button className='chat-users-btn' onClick={() => setOpenChat(false)}>Group</button>
-                    </div>
-
-                        : <div className='chat-users-container-btn-row'>
-                            <button className='chat-users-btn'>Add Friends</button>
-                        </div>}
-                    <div className='chat-users-seperator-line'></div>
-
-                    <div className='chat-users-msg-column-container'>
-
-
-                        {
-                            addFriendPage &&
-                            allUsers.map((user, index) => {
-                                return (
-                                    <MessageTile
-                                        handleOpenMessage={handleOpenMessage}
-                                        user={user}
-                                        key={index}
-                                    />
-                                );
-                            })
-                        }
-
-                        {
-                            openChat &&
-                            !addFriendPage &&
-                            // !openCreateGroup &&
-                            chats.map((chat, index) => {
-                                return (
-                                    <MessageTile
-                                        handleOpenMessage={handleOpenMessage}
-                                        user={chat.user}
-                                        chat={chat.chat}
-                                        key={index}
-                                    />
-                                );
-                            })
-                        }
-
-                        {
-                            !openChat &&
-                            !addFriendPage &&
-                            !openCreateGroup &&
-                            <div style={{ width: "100%" }}>
-                                <MessageTile
-                                    handleOpenMessage={handleCreateGroup}
-                                    user={{
-                                        username: "New Group",
-                                        profilePicture: "https://huntsman.upenn.edu/wp-content/uploads/2019/07/mentoring-icon-10.jpg.png"
-                                    }}
-                                />
-                                {groupChats.map((chat, index) => {
+                            {
+                                addFriendPage &&
+                                allUsers.map((user, index) => {
                                     return (
                                         <MessageTile
                                             handleOpenMessage={handleOpenMessage}
-                                            user={{
-                                                username: chat.groupName,
-                                                profilePicture: groupChatLogo
-                                            }}
-                                            chat={chat}
-                                            key={index}
-                                        />
-                                    );
-                                })}
-                            </div>
-                        }
-
-                        {
-                            !openChat &&
-                            !addFriendPage &&
-                            openCreateGroup &&
-                            <div style={{ width: "100%" }}>
-                                <CreateGroupTile
-                                    handleCreateGroup={handleCreateGroup}
-                                    newGroupName={newGroupName}
-                                    setNewGroupName={setNewGroupName}
-                                />
-                                <div className='chat-users-container-btn-row'>
-                                    <button className='chat-users-btn'>Add Members</button>
-                                </div>
-                                <div className='chat-users-seperator-line'></div>
-                                {allUsers.map((user, index) => {
-                                    if (user.username === me?.username) {
-                                        return null;
-                                    }
-                                    return (
-                                        <AddToGroupTile
-                                            key={index}
                                             user={user}
-                                            selectedMembers={selectedMembers}
-                                            setSelectedMembers={setSelectedMembers}
+                                            key={index}
                                         />
                                     );
-                                })}
-                            </div>
-                        }
+                                })
+                            }
 
-                    </div>
-                </div>
+                            {
+                                openChat &&
+                                !addFriendPage &&
+                                // !openCreateGroup &&
+                                chats.map((chat, index) => {
+                                    return (
+                                        <MessageTile
+                                            handleOpenMessage={handleOpenMessage}
+                                            user={chat.user}
+                                            chat={chat.chat}
+                                            key={index}
+                                        />
+                                    );
+                                })
+                            }
 
-
-
-
-
-                <div className='chat-users-container '>
-                    <div className='chat-users-container-nav msg-box-nav'>
-                        <div className='chat-users-display-image'>
-                            {openedChat?.profilePicture ? <img src={openedChat?.profilePicture} alt='' className='chat-users-display-image' /> : <></>}
-                        </div>
-                        <div className='chat-users-msg-column'>
-                            <div className='chat-users-username'>{openedChat?.username}</div>
-                            {openedChat?.username ? <div className='chat-users-msg'>Online</div> : <></>}
-                        </div>
-                    </div>
-                    <div style={{ height: "18px" }}></div>
-                    <div className='chat-users-seperator-line'></div>
-                    <ScrollToBottom className='chat-msg-box'>
-                        {messages?.map((item, i) => {
-                            return (
-                                <div className={`${item?.author === me?.username ? "right-msg-tile" : "left-msg-tile"}`} key={i}>
-                                    <div className={`msg ${item?.author === me?.username ? "right-side-msg" : "left-side-msg"}`} ><p>{item?.message}</p></div>
+                            {
+                                !openChat &&
+                                !addFriendPage &&
+                                !openCreateGroup &&
+                                <div style={{ width: "100%" }}>
+                                    <MessageTile
+                                        handleOpenMessage={handleCreateGroup}
+                                        user={{
+                                            username: "New Group",
+                                            profilePicture: "https://huntsman.upenn.edu/wp-content/uploads/2019/07/mentoring-icon-10.jpg.png"
+                                        }}
+                                    />
+                                    {groupChats.map((chat, index) => {
+                                        return (
+                                            <MessageTile
+                                                handleOpenMessage={handleOpenMessage}
+                                                user={{
+                                                    username: chat.groupName,
+                                                    profilePicture: groupChatLogo
+                                                }}
+                                                chat={chat}
+                                                key={index}
+                                            />
+                                        );
+                                    })}
                                 </div>
-                            )
-                        })}
-                    </ScrollToBottom>
-                    <div className='chat-bottom'>
-                        <input type="text" id="chatInput"
-                            value={currentMessage}
-                            onChange={(event) => {
-                                setCurrentMessage(event.target.value);
-                            }}
-                            onKeyPress={(event) => {
-                                event.key === "Enter" && sendMessage();
-                            }}
-                            className='chat-input' placeholder='Send message...' />
-                        <button onClick={() => sendMessage()} className='send-btn'>
-                            <SendBtn />
-                        </button>
+                            }
+
+                            {
+                                !openChat &&
+                                !addFriendPage &&
+                                openCreateGroup &&
+                                <div style={{ width: "100%" }}>
+                                    <CreateGroupTile
+                                        handleCreateGroup={handleCreateGroup}
+                                        newGroupName={newGroupName}
+                                        setNewGroupName={setNewGroupName}
+                                    />
+                                    <div className='chat-users-container-btn-row'>
+                                        <button className='chat-users-btn'>Add Members</button>
+                                    </div>
+                                    <div className='chat-users-seperator-line'></div>
+                                    {allUsers.map((user, index) => {
+                                        if (user._id === me?._id) {
+                                            return null;
+                                        }
+                                        return (
+                                            <AddToGroupTile
+                                                key={index}
+                                                user={user}
+                                                selectedMembers={selectedMembers}
+                                                setSelectedMembers={setSelectedMembers}
+                                            />
+                                        );
+                                    })}
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div className='chat-users-container '>
+                        <div className='chat-users-container-nav msg-box-nav'>
+                            <div className='chat-users-display-image'>
+                                {openedChat?.profilePicture ? <img src={openedChat?.profilePicture} alt='' className='chat-users-display-image' /> : <></>}
+                            </div>
+                            <div className='chat-users-msg-column'>
+                                <div className='chat-users-username'>{openedChat?.username}</div>
+                                {openedChat?.username ? <div className='chat-users-msg'>Online</div> : <></>}
+                            </div>
+                        </div>
+                        <div style={{ height: "18px" }}></div>
+                        <div className='chat-users-seperator-line'></div>
+                        <ScrollToBottom className='chat-msg-box'>
+                            {messages?.map((item, i) => {
+                                return (
+                                    <div className={`${item?.author === me?.username ? "right-msg-tile" : "left-msg-tile"}`} key={i}>
+                                        <div className={`msg ${item?.author === me?.username ? "right-side-msg" : "left-side-msg"}`} ><p>{item?.message}</p></div>
+                                    </div>
+                                )
+                            })}
+                        </ScrollToBottom>
+                        <div className='chat-bottom'>
+                            <input type="text" id="chatInput"
+                                value={currentMessage}
+                                onChange={(event) => {
+                                    setCurrentMessage(event.target.value);
+                                }}
+                                onKeyPress={(event) => {
+                                    event.key === "Enter" && sendMessage();
+                                }}
+                                className='chat-input' placeholder='Send message...' />
+                            <button onClick={() => sendMessage()} className='send-btn'>
+                                <SendBtn />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './doctorProfile.css';
 import { Component } from "react";
 import Slider from "react-slick";
@@ -172,7 +172,7 @@ const DoctorProfile = () => {
                     </div>
                     <div className='session-book-card '>
                         <div className='card-Box-booked-slot-details'>
-                            <p>Dear {username?username:""},</p>
+                            <p>Dear {username ? username : ""},</p>
                             <p>We've booked you a visit at XYZ Clinic</p>
                             <div>
                                 <p> Here are the details: Doctor/Staff:</p>
@@ -184,7 +184,7 @@ const DoctorProfile = () => {
                             </div>
                             <div>
                                 <p>Serial no: 28 </p>
-                                <p> Reporting time: { slots[selectedSlot]}</p>
+                                <p> Reporting time: {slots[selectedSlot]}</p>
                             </div>
                         </div>
                     </div>

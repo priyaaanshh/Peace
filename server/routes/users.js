@@ -1,5 +1,5 @@
 import Express from "express";
-import { addAppointmentWithDoctor, addEmptyAnswer, addNoteToUser, deleteUser, getCurrentMonthNewUserCount, getTotalUserCount, getUser, getUsers, updateAnswer, updateUser } from "../controllers/user.js";
+import { addAppointmentWithDoctor, addEmptyAnswer, deleteUser, getCurrentMonthNewUserCount, getTotalUserCount, getUser, getUsers, updateAnswer, updateUser } from "../controllers/user.js";
 import { verifyAdmin, verifyUser } from "../utils/verification.js";
 const router = Express.Router();
 
@@ -18,7 +18,6 @@ router.delete('/:access_token/:id', verifyUser, deleteUser); //Only user can del
 
 router.post('/addEmptyAnswer', addEmptyAnswer);
 router.patch('/updateAnswer', updateAnswer);
-router.post('/addNoteToUser', addNoteToUser);
 router.post('/addAppointmentWithDoctor', addAppointmentWithDoctor);
 
 //Only admin can access

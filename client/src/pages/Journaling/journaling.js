@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import './journaling.css'
+import '../Home/home.css'
+import Sidebar from '../../components/SideBar/sidebar';
 import { baseURL } from '../../baseURL/baseURL';
 import useFetch from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
-import NavButtons from '../../components/NavButtons/navButtons';
-import SearchBar from '../../components/SearchBar/searchBar';
 import CalendarComponent from '../../components/Calendar/calendar';
 import { ReactComponent as SideComma } from '../../assets/svg/sideComma.svg'
 import axios from 'axios';
+import Navbar from '../../components/Navbar/navbar';
 
 
 const Journaling = () => {
@@ -99,14 +100,13 @@ const Journaling = () => {
 
 
   return (
-    <div className='home-page'>
-      <div className='navbar'>
-        <div className='nav-text'>
-          <p className='home-main-heading' style={{ fontWeight: "600" }}>Journaling </p>
-        </div>
-        <SearchBar />
-        <NavButtons />
-      </div>
+
+    <div className='home'>
+      <Sidebar Page={"Journaling"} />
+      <div className='home-page'>
+
+        <Navbar mainHeading={"Journaling"} searchBar={true} />
+      
       <div className='Journaling-page-row'>
         <div className='Journaling-page-column'>
           <CalendarComponent selectedNoteDate={selectedNoteDate} setSelectedNoteDate={setSelectedNoteDate} />
@@ -125,6 +125,7 @@ const Journaling = () => {
           </div>
           <button className='save-note' onClick={() => handleSave()}>Save</button>
         </div>
+      </div>
       </div>
     </div>
   )

@@ -8,6 +8,38 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    position: relative;
+}
+
+.hamburger-menu-button {
+    display: none;
+}
+
+.hamburger-on-sidebar {
+    display: none;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    padding-right: 5%;
+}
+
+.show-side-bar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    max-width: 310px;
+    min-width: 240px;
+    flex-shrink: 0;
+    background: rgba(218, 218, 218, 0.20);
+    backdrop-filter: blur(50px);
 }
 
 .home-sidebar {
@@ -23,6 +55,7 @@
     background: rgba(218, 218, 218, 0.20);
     backdrop-filter: blur(50px);
 }
+
 
 
 .sidebar-buttons {
@@ -74,4 +107,18 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+@media screen and (max-width: 768px) {
+    .home-sidebar {
+        display: none;
+    }
+
+    .hamburger-on-sidebar {
+        display: flex;
+    }
+
+    .hamburger-menu-button {
+        display: flex;
+    }
 }

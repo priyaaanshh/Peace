@@ -209,6 +209,7 @@
     margin: 20px;
     border-radius: 20px;
     background: #fff;
+    overflow: hidden;
 }
 
 .card-Box {
@@ -332,6 +333,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    cursor: pointer;
 }
 
 .card-Box-booked-slot-details {
@@ -356,7 +358,6 @@
 .card-Box-booked-slot-details>div>p {
     margin: 0;
 }
-
 @media screen and (max-width: 768px) {
     .doctor-detail-text-box {
         flex-wrap: wrap;
@@ -370,8 +371,8 @@
         width: 100%;
     }
 
-        .card-Box-booked-slot-details {
-            font-size: 20px;
-            padding: 0 12px;
-        }
+    .card-Box-booked-slot-details {
+        font-size: 20px;
+        padding: 0 12px;
+    }
 }

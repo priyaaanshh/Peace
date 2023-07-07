@@ -1,12 +1,9 @@
 import Questions from "../models/questions.js";
 
 export const addQuestion = async (req, res, next) => {
-    const { question, options } = req.body;
+    // const { question, options } = req.body;
     try {
-        const newQuestion = new Questions({
-            question: question,
-            options: options
-        });
+        const newQuestion = new Questions(req.body);
         await newQuestion.save();
         res.status(201).json({ message: "Question Added" });
     } catch (error) {
@@ -15,9 +12,10 @@ export const addQuestion = async (req, res, next) => {
 };
 
 export const getAllQuestions = async (req, res, next) => {
+    const { questionNumber } = req.query;
     try {
-        const questions = await Questions.find();
-        res.status(200).json(questions);
+        const question = await Questions.findOne({ questionNumber: questionNumber });
+        res.status(200).json(question);
     } catch (error) {
         next(error);
     }

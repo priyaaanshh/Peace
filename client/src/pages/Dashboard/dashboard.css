@@ -179,3 +179,8 @@
     gap: 1%;
     width: 100%;
 }
+@media screen and (max-width: 768px) {
+    .navbar {
+        align-items: start;
+    }
+}

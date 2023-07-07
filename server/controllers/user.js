@@ -81,24 +81,6 @@ export const updateAnswer = async (req, res, next) => {
 };
 
 
-export const addNoteToUser = async (req, res, next) => {
-    try {
-        const user = await User.findById(req.body.id);
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        const today = new Date().toLocaleDateString();
-        user.notes.push({ note: req.body.note, date: today });
-        await user.save();
-
-
-        return res.status(201).json({ message: "Note Added", todat: today });
-    } catch (error) {
-        next(error);
-    }
-};
-
 export const addAppointmentWithDoctor = async (req, res, next) => {
     try {
         const user = await User.findById(req.body.id);

@@ -28,12 +28,12 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    answer: [[{
-        type: Number
-    }]],
-    notes: [{
-        note: {
-            type: String
+    moodScores: [{
+        questionNumber: {
+            type:Number
+        },
+        moodScore: {
+            type: Number
         },
         date: {
             type: String
@@ -46,15 +46,6 @@ const UserSchema = new mongoose.Schema({
         date: {
             type: String
         }
-    }],
-    chats: [{
-        chatId: {
-            type: String,
-            required:true,
-        },
-        userIdLinkedWithChat: {
-            type: String,
-        },
     }],
 }, { timestamps: true });
 

@@ -1,12 +1,16 @@
 import mongoose from "mongoose";
 
 const QuestionSchema = new mongoose.Schema({
+    questionNumber: {
+        type: Number,
+        required: true
+    },
     question: {
         type: String,
         required: true
     },
     options: [{
-        mood: {
+        moodScoreBoost: {
             type: Number,
             required: true
         },

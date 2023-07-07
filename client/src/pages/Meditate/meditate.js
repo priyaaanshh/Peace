@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './meditate.css'
+import '../Home/home.css'
+import Sidebar from '../../components/SideBar/sidebar';
 import { baseURL } from '../../baseURL/baseURL';
 import useFetch from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
-import NavButtons from '../../components/NavButtons/navButtons';
-import SearchBar from '../../components/SearchBar/searchBar';
 import Card from '../../components/HomePageCard/card';
+import Navbar from '../../components/Navbar/navbar';
 
 const Meditate = () => {
   const navigate = useNavigate();
@@ -18,14 +19,12 @@ const Meditate = () => {
 
 
   return (
-    <div className='home-page'>
-      <div className='navbar'>
-        <div className='nav-text'>
-          <p className='home-main-heading' style={{ fontWeight: "600" }}>Meditate </p>
-        </div>
-        <SearchBar />
-        <NavButtons />
-      </div>
+    <div className='home'>
+      <Sidebar Page={"Meditate"} />
+      <div className='home-page'>
+
+        <Navbar mainHeading={"Meditate"} searchBar={true} />
+      
       <div className='option-row'>
         <div className='option-row-item' style={{background: "#113F67"}}>All</div>
         <div className='option-row-item'>Sleep</div>
@@ -42,7 +41,8 @@ const Meditate = () => {
         <Card />
       </div>
 
-      <div className='home-page-heading'>Quick & Easy</div>
+        <div className='home-page-heading'>Quick & Easy</div>
+      </div>
     </div>
   )
 }
