@@ -14,12 +14,12 @@ import Assesment from './pages/Assesment/assesment'
 import Chat from './pages/Chat/chat'
 import Journaling from './pages/Journaling/journaling'
 import Rewards from './pages/Rewards/rewards'
+import Player from './pages/Player/player'
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
 
@@ -40,6 +40,9 @@ const App = () => {
         <Route path="/assesment/questions" element={<Question />} />
 
         <Route path="/user" element={<UserProfile />} />
+
+        <Route path="/player" element={<Player />} />
+        
       </Routes>
     </BrowserRouter>
   )

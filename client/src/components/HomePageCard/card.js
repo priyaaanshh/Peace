@@ -1,10 +1,12 @@
 import React from 'react'
 import './card.css'
 import sliderImage from '../../assets/default-slider-img.png'
+import { useNavigate } from 'react-router-dom'
 
 const Card = () => {
+    const navigate = useNavigate();
     return (
-        <div className='card-container'>
+        <div className='card-container' onClick={() => navigate('/player')}>
             <img src={sliderImage} alt='' className='card-image' />
             <div className='CardDetails'>
                 <p className='CardHeading'>Daily Trip</p>

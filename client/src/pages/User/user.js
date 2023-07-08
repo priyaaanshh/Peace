@@ -100,7 +100,7 @@ const UserProfile = () => {
           )}
         </div>
 
-        <input className='profilePicture-input' name='profilePicture' id='profilePicture' type="file" onChange={handleProfilePictureChange} />
+        {/* <input className='profilePicture-input' name='profilePicture' id='profilePicture' type="file" onChange={handleProfilePictureChange} /> */}
         
         <div className='username'>{userInfo?.username}</div>
         <div className='profile-options'>
