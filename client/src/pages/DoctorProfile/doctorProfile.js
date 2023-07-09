@@ -3,7 +3,7 @@ import './doctorProfile.css';
 import { Component } from "react";
 import Slider from "react-slick";
 import Back from '../../assets/svg/back';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import userImage from '../../assets/dr_image.png'
 import { ReactComponent as StartRating } from '../../assets/svg/star rating.svg';
 
@@ -34,6 +34,12 @@ const slots = [
     "10:30 PM",
 ];
 const DoctorProfile = () => {
+
+    const location = useLocation().state;
+    console.log(location);
+
+
+
     const [popUpPages, setPopUpPages] = useState(0);
     const [selectedSlot, setSelectedSlot] = useState(0);
     const [doctorName, setDoctorName] = useState("Dr. Ignacio Hettinger");
@@ -72,9 +78,9 @@ const DoctorProfile = () => {
 
                 <div className='doctorProfile'>
                     <div className='user-profile-img'>
-                        <img src={userImage} alt='' />
+                        <img src={location?.image ? location?.image : userImage} alt='' />
                     </div>
-                    <p className='doctorName'>{doctorName}</p>
+                    <p className='doctorName'>{location?.Name ? location?.Name : doctorName}</p>
                     <p className='doctorProffesion'>Clinical psychologist</p>
 
                     <div className='doctorDetailsRow'>
@@ -94,7 +100,7 @@ const DoctorProfile = () => {
 
                     <div className='doctor-detail-text-box'>
                         <p>
-                            <b>{doctorName}</b> is a leading psychiatrist based at The London Medical Specialist Clinic, who specialises in psychosis, depression, self-harm, psychotherapy, suicidal thoughts, bipolar illness and personality disorders. <b>{doctorName} received her medical training and doctorate in psychiatry from the University of Rome in Italy. She has extensive clinical and research experience from both the USA and Europe. She has worked as a clinical lecturer at King's College's Institute of Psychiatry Maudsley Hospital since 2008. There, she conducts research on individuals who have experienced their first psychotic episode with a particular interest in metabolic anomalies, childhood maltreatment, and sexual function. She also has experience from her time spent caring for individuals with severe mental illness who were experiencing psychosis at the National Psychosis Unit. After serving as a consultant psychiatrist for an inpatient facility housing females who were at a high risk of self-harm and suicide, Dr Ignacio has extensive expertise working with patients who suffer from personality disorders.</b> She also deals with patients affected by anxiety and depression. <b>{doctorName}</b>  has collaborated with the Italian health services to repatriate numerous citizens with mental health-related difficulties.
+                            <b>{location?.Name ? location?.Name : doctorName}</b> is a leading {location?.Profession ? location?.Profession : "psychiatrist"} based at The London Medical Specialist Clinic, who specialises in psychosis, depression, self-harm, psychotherapy, suicidal thoughts, bipolar illness and personality disorders. <b>{location?.Name ? location?.Name : doctorName} received her medical training and doctorate in psychiatry from the University of Rome in Italy. She has extensive clinical and research experience from both the USA and Europe. She has worked as a clinical lecturer at King's College's Institute of Psychiatry Maudsley Hospital since 2008. There, she conducts research on individuals who have experienced their first psychotic episode with a particular interest in metabolic anomalies, childhood maltreatment, and sexual function. She also has experience from her time spent caring for individuals with severe mental illness who were experiencing psychosis at the National Psychosis Unit. After serving as a consultant psychiatrist for an inpatient facility housing females who were at a high risk of self-harm and suicide, Dr Ignacio has extensive expertise working with patients who suffer from personality disorders.</b> She also deals with patients affected by anxiety and depression. <b>{location?.Name ? location?.Name : doctorName}</b>  has collaborated with the Italian health services to repatriate numerous citizens with mental health-related difficulties.
                         </p>
                     </div>
 
@@ -111,7 +117,7 @@ const DoctorProfile = () => {
                             </div>
                         </div>
                         <p>
-                            <b>{doctorName}</b> is an excellent psychiatrist. <b>{doctorName}</b> was very supportive. Creating a comfortable and safe environment during the consultations, was so helpful in coming to terms with things. Her explanations were excellent, encouraging you to think and consider wider aspects of your life. <b>Would definitely recommend her.</b>
+                            <b>{location?.Name ? location?.Name : doctorName}</b> is an excellent {location?.Profession ? location?.Profession : "psychiatrist"}. <b>{location?.Name ? location?.Name : doctorName}</b> was very supportive. Creating a comfortable and safe environment during the consultations, was so helpful in coming to terms with things. Her explanations were excellent, encouraging you to think and consider wider aspects of your life. <b>Would definitely recommend her.</b>
                         </p>
                     </div>
                     <button className='doctorProfile-btn' onClick={getDateOnConsole}>Next</button>
@@ -176,7 +182,7 @@ const DoctorProfile = () => {
                             <p>We've booked you a visit at XYZ Clinic</p>
                             <div>
                                 <p> Here are the details: Doctor/Staff:</p>
-                                <b>{doctorName}</b>
+                                <b>{location?.Name ? location?.Name : doctorName}</b>
                             </div>
                             <div>
                                 <p>Purpose: Consultation </p>

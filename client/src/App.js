@@ -15,16 +15,19 @@ import Chat from './pages/Chat/chat'
 import Journaling from './pages/Journaling/journaling'
 import Rewards from './pages/Rewards/rewards'
 import Player from './pages/Player/player'
+import PaymentPage from './pages/PaymentPage/PaymentPage'
 
 const App = () => {
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/payment" element={<PaymentPage />} />
 
 
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/" element={ <Dashboard />} />
         <Route path="/meditate" element={<Meditate />} />
         <Route path="/therapy-session" element={<Therapy />} />
         <Route path="/assessment" element={<Assesment />} />
@@ -42,7 +45,9 @@ const App = () => {
         <Route path="/user" element={<UserProfile />} />
 
         <Route path="/player" element={<Player />} />
-        
+
+
+
       </Routes>
     </BrowserRouter>
   )

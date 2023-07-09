@@ -108,15 +108,22 @@
 #carousel {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    justify-content: start;
+    align-items: center;
+    justify-content: center;
     max-width: 270px;
-    width: 50%;
-    height: 46%;
+    width: 48%;
+    height: 42%;
     max-height: 120px;
     position: absolute;
     top: 14px;
     right: 15px;
+    /* border: 1px solid black; */
+}
+
+#carousel>div {
+    position: absolute;
+    top: 40px;
+    right: 12%;
 }
 
 #progress {
@@ -125,12 +132,16 @@
     height: 46%;
     max-height: 80px;
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     bottom: 19px;
     right: 15px;
 }
 
 .empty-progress-bar {
-    width: 180px;
+    max-width: 180px;
+    width: 100%;
     border: 8px solid #cfd9e1;
     border-radius: 10px;
     position: absolute;
@@ -145,6 +156,27 @@
     position: absolute;
     top: -8px;
     left: -8px;
+}
+
+
+@media screen and (max-width:585px) {
+    #carousel>div {
+        top: 22%;
+        right: 7px;
+    }
+
+    #progress {
+        transform: scale(0.7);
+        bottom: 4px;
+        right: 5%;
+    }
+}
+
+@media screen and (max-width:440px) {
+    #progress {
+        /* right: 12%px; */
+        margin-right: 5%;
+    }
 }
 
 #percentage {
@@ -179,6 +211,7 @@
     gap: 1%;
     width: 100%;
 }
+
 @media screen and (max-width: 768px) {
     .navbar {
         align-items: start;

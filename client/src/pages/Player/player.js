@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './player.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
     AiOutlineHeart,
     AiFillBackward,
@@ -14,6 +14,7 @@ import userImage from '../../assets/PlayerImage.png';
 import Back from '../../assets/svg/back';
 
 const Player = () => {
+    const location = useLocation()?.state;
     const navigate = useNavigate();
     const audioEl = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -30,8 +31,6 @@ const Player = () => {
         const song = musicFolder(key);
         return {
             title: `${key.substring(2, key.length - 4)}`,
-            artist: `Artist ${key}`,
-            img_src: `./images/${key}.jpg`,
             src: song.default || song,
         };
     });
@@ -126,19 +125,19 @@ const Player = () => {
 
                 <div className="doctorProfile">
                     <div className="user-profile-img">
-                        <img src={userImage} alt="" />
+                        <img src={location?.image ? location?.image : userImage} alt="" />
                     </div>
-                    <p className="playerTitle">{songs[currentSongIndex].title.substring(0,25)}</p>
-                    <p className="playerSubTitle">Patience</p>
+                    <p className="playerTitle">{location?.CardHeading ? location?.CardHeading : songs[currentSongIndex].title.substring(0, 25)}</p>
+                    <p className="playerSubTitle">{location?.CardSubHeading4 ? location?.CardSubHeading4 : "Patience"}</p>
 
                     <div className="playerDetailsRow">
                         <div className="playerDetailBox">
                             <div className="playerSubTitle">Narrator</div>
-                            <div>Tammara Levitt</div>
+                            <div>{location?.CardSubHeading2 ? location?.CardSubHeading2 : "Tammara Levitt"}</div>
                         </div>
                         <div className="playerDetailBox">
                             <div className="playerSubTitle">Author</div>
-                            <div>Tammara Levitt</div>
+                            <div>{location?.CardSubHeading2 ? location?.CardSubHeading2 : "Tammara Levitt"}</div>
                         </div>
                     </div>
 
@@ -160,7 +159,7 @@ const Player = () => {
                         type="range"
                         min="0"
                         max="100"
-                        step="0.01"
+                        step="0.000001"
                         value={progress}
                         onChange={handleProgressBarChange}
                         className="media-empty-progress-bar"

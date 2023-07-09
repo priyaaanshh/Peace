@@ -16,14 +16,16 @@ const UserProfile = () => {
   const navigate = useNavigate();
 
   const { dispatch } = useContext(AuthContext);
-  const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))?._id}`)
+  const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))?._id}`);
+
   useEffect(() => {
     console.log(data);
     setUserInfo(data);
-  }, [data])
+  }, [data]);
+
   useEffect(() => {
-    console.log(userInfo)
-  }, [userInfo])
+    console.log(userInfo);
+  }, [userInfo]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,7 +37,6 @@ const UserProfile = () => {
 
   const handleProfilePictureChange = async (e) => {
     const file = e.target.files[0];
-    // console.log(file);
     try {
       const data = new FormData();
       data.append("file", file);
@@ -48,10 +49,14 @@ const UserProfile = () => {
 
       const { url } = await uploadRes.data;
       console.log(url);
+
+      // Update the profile picture in the state
       setUserInfo((prevData) => ({
         ...prevData,
         [e.target.name]: url,
-      }))
+      }));
+
+      // Call handleProfileUpdate after the state has been updated
       console.log("updated UserInfo");
       handleProfileUpdate();
     } catch (error) {
@@ -68,7 +73,8 @@ const UserProfile = () => {
   const handleProfileUpdate = async () => {
     dispatch({ type: "LOGIN_START" });
     try {
-      const response = await axios.patch(`${baseURL}/user/${localStorage.getItem("access_token")}/${userInfo?._id}`,
+      const response = await axios.patch(
+        `${baseURL}/user/${localStorage.getItem("access_token")}/${userInfo?._id}`,
         userInfo
       );
       console.log(response.data);
@@ -101,7 +107,7 @@ const UserProfile = () => {
         </div>
 
         {/* <input className='profilePicture-input' name='profilePicture' id='profilePicture' type="file" onChange={handleProfilePictureChange} /> */}
-        
+
         <div className='username'>{userInfo?.username}</div>
         <div className='profile-options'>
           <div className='profile-option'>

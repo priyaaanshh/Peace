@@ -1,0 +1,274 @@
+.PaymentPage-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.Payment-page {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+    height: max-content;
+}
+
+.PaymentBG {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    z-index: -2;
+}
+
+.content-1 {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+    max-width: 650px;
+    /* border: 1px solid green; */
+    min-height: 100vh;
+}
+
+.other-bottom-content {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+    max-width: 650px;
+}
+
+.top-badge {
+    margin-top: 3rem;
+
+    color: #113F67;
+
+    /* text-xs/Medium */
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+
+
+    padding: 4px 8px;
+    border-radius: 36px;
+    background: rgba(17, 63, 103, 0.40);
+    box-shadow: 0px 1px 2px 0px rgba(105, 81, 255, 0.05);
+}
+
+.top-heading {
+    color: #000;
+    font-family: Poppins;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+
+    margin-top: 20px;
+}
+
+.payment-page-seperator-line {
+    width: 100%;
+    border: 0.5px solid #DADADA;
+    margin: 9px 0px;
+}
+
+.content {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    width: 90%;
+    margin: 10px 0px;
+}
+
+.top-subHeading {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    margin: 12px 0px;
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.top-content-line {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 8px;
+    margin: 4px 0px;
+}
+
+.top-content-text {
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.cost-table {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    width: 90%;
+    margin: 20px 0px;
+}
+
+.table-rows {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 8px 0px;
+    font-size: 18px;
+}
+
+.left-heading {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 90%;
+    margin-top: 18px;
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.left-subheading {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 90%;
+    margin-bottom: 12px;
+    margin-top: 8px;
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.openCardBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 50px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+    gap: 12px;
+
+
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    margin-bottom: 28px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.card-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+
+    margin: 16px 0px;
+    margin-bottom: 24px;
+}
+
+.card-inout-container {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    flex-direction: column;
+    margin: 8px 0px;
+}
+
+.card-input-label {
+    font-size: 18px;
+    font-family: Poppins;
+    font-weight: 600;
+    color: #4F5B76;
+    margin-bottom: 8px;
+}
+
+.card-input- {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    border: 2px solid #E0E0E0;
+    border-radius: 8px;
+}
+
+.card-input->input {
+    display: flex;
+    border: none;
+    outline: none;
+    margin-left: 18px;
+    width: 60%;
+}
+
+.card-input->input::placeholder {
+    font-size: 18px;
+    font-family: Poppins;
+    font-weight: 600;
+    color: #A5ACB8;
+}
+
+#card-location::placeholder {
+    color: black;
+}
+
+.card-input-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 12px;
+    width: 100%;
+}
+
+.input-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40%;
+    height: 100%;
+}

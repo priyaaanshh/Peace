@@ -24,7 +24,7 @@ const Question = () => {
     const [questions, setQuestions] = useState([]);
     const [selectedAnswer, setSelectedAnswer] = useState({});
     const [me, setMe] = useState(null);
-    const numberOfQuestionsToShow = 1; // Change this variable to determine the number of questions to show
+    const numberOfQuestionsToShow = 2; // Change this variable to determine the number of questions to show
 
     const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))._id}`)
 

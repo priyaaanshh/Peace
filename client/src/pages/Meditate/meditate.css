@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: start;
     width: 100%;
-    height: 32px;
+    height: max-content;
     gap: 20px;
 }
 
@@ -16,7 +16,7 @@
     background: rgba(0, 0, 0, 0.30);
     backdrop-filter: blur(26.666667938232422px);
     width: max-content;
-    height: 100%;
+    height: 30px;
     padding: 0px 25px;
     color: #FFF;
     font-size: 20px;
@@ -26,4 +26,16 @@
     line-height: normal;
     letter-spacing: -0.48px;
     cursor: pointer;
+}
+
+.quick-n-easy-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: start;
+    height: max-content;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }

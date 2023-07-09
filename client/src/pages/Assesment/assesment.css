@@ -59,3 +59,31 @@
     width: 40%;
     padding-right: 2%;
 }
+
+.MoodMeter {
+    width: 540px;
+    cursor: pointer;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MoodMeter-chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 17px;
+    width: 55%;
+    max-width: 280px;
+    height: 78%;
+    max-height: 180px;
+}
+
+@media screen and (max-width:450px){
+    .MoodMeter-chart{
+        right: 7px;
+    }
+}

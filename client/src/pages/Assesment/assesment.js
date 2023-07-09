@@ -4,12 +4,13 @@ import '../Home/home.css'
 import { baseURL } from '../../baseURL/baseURL';
 import useFetch from '../../hooks/useFetch';
 import { useNavigate } from 'react-router-dom';
-import GetRewards from '../../assets/svg/getRewards';
-import MoodMeter from '../../assets/svg/MoodMeter';
+import { ReactComponent as MoodMeter } from '../../assets/svg/MoodMeter.svg';
+import { ReactComponent as GetRewards } from '../../assets/svg/getRewards.svg';
 import DotMenu from '../../assets/svg/dot menu';
 import Chart from '../../components/Chart/chart.tsx';
 import Sidebar from '../../components/SideBar/sidebar';
 import Navbar from '../../components/Navbar/navbar';
+import CommonChart from '../../components/Chart/commonChart';
 
 
 const Assesment = () => {
@@ -17,7 +18,7 @@ const Assesment = () => {
 
   const [me, setMe] = useState(null);
 
-  const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))._id}`)
+  const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))?._id}`)
 
   useEffect(() => {
     setMe(data);
@@ -32,28 +33,7 @@ const Assesment = () => {
     const value = me?.moodScores[i].moodScore;
     labels.push(label.split(',')[0]);
     values.push(value);
-    // console.log(labels);
   }
-
-
-  const generateData = () => {
-    return labels.map((e, i) => {
-      return values[i]
-    });
-  };
-
-  const graphData = {
-    labels,
-    datasets: [
-      {
-        label: 'Mood Score',
-        data: generateData(),
-        borderColor: '#113F67',
-        backgroundColor: '#113F67B0',
-      }
-    ],
-  };
-
 
 
   return (
@@ -66,25 +46,12 @@ const Assesment = () => {
         <div className='assesment-page-quote'>*”Your good mood, your great rewards! Embrace the benefits of a healthy mind and body."</div>
         <div className='home-page-tiles'>
           <div className="home-page-tile" onClick={() => { navigate('/assesment/questions') }}>
-            <GetRewards className="home-page-tile" />
+            <GetRewards />
           </div>
-          <div className="home-page-tile" onClick={() => { }}>
-            <MoodMeter className="home-page-tile" />
-          </div>
-          <div className='home-page-tile tile-container'>
-            {/* <UpComingSessions /> */}
-            <div id="carousel">
-              <div>
-                {/* <SessionSlider /> */}
-              </div>
-            </div>
-            <div id="progress">
-              <Chart data={graphData} />
-              {/* <div className='empty-progress-bar'>
-              <div className='filled-progress-bar' style={{ width: `${1.8 * progress}px` }}>
-              </div>
-              <p id='percentage'>{progress}%</p>
-            </div> */}
+          <div className="MoodMeter">
+            <MoodMeter />
+            <div className='MoodMeter-chart'>
+              <CommonChart values={values} label={labels}/>
             </div>
           </div>
         </div>
@@ -93,7 +60,6 @@ const Assesment = () => {
 
         <div className='mood-score-list'>
           {me?.moodScores?.reverse().map((item, index) => {
-            // console.log(item)
             return (
               <div className='mood-score-tile' key={index}>
                 <div className='mood-tile-left'>

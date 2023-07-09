@@ -5,11 +5,13 @@ export const createNewChat = async (req, res, next) => {
     // console.log(req.params, req.query, req.body, "createNewChat");
 
     const { members, isGroupChat, groupName } = req.body;
+    console.log(req.body);
     try {
         if (!isGroupChat) {
-            const foundChat = await Chat.findOne({ members: { $all: members } });
+            const foundChat = await Chat.findOne({ members: { $all: members }, isGroupChat });
             if (foundChat) {
                 if (!(members[0] === members[1] && foundChat.members[0] !== foundChat.members[1])) {
+                    console.log(foundChat);
                     return res.status(200).json(foundChat);
                 }
 
@@ -53,6 +55,7 @@ export const getAllChats = async (req, res, next) => {
                 members: member,
                 isGroupChat: false,
             }).sort({ updatedAt: -1 });
+
 
             const friendUsers = [];
             for (let i = 0; i < chats.length; i++) {

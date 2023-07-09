@@ -90,7 +90,7 @@ const OnBoardingSurvey = () => {
                                 <div className='onboarding-column-img-container'>
                                     <img src={page4img} alt='' /></div>
 
-                                <button onClick={() => { navigate('/') }} className="onboarding-btn-continue continue-btn-selected">
+                                <button onClick={() => { navigate('/payment') }} className="onboarding-btn-continue continue-btn-selected">
                                     Continue
                                 </button>
                             </> : <></>}
