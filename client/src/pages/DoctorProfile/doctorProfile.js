@@ -36,7 +36,7 @@ const slots = [
 const DoctorProfile = () => {
 
     const location = useLocation().state;
-    console.log(location);
+    // console.log(location);
 
 
 
@@ -207,7 +207,7 @@ const datesArray = [];
 class DatePicker extends Component {
     handleSliderChange = (index) => {
         selectedDate = datesArray[index];
-        console.log(selectedDate);
+        // console.log(selectedDate);
         // Perform any additional actions based on the selected page index
     };
     render() {

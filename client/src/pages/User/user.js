@@ -10,22 +10,25 @@ import ManageSubs from '../../assets/svg/credit card';
 import UserIcon from '../../assets/svg/user';
 import Logout from '../../assets/svg/exit';
 import LockIcon from '../../assets/svg/lock';
+import { GoMute, GoUnmute } from "react-icons/go";
+import { VolumeContext } from '../../Context/volumeContext';
+import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
+import { BiEdit } from "react-icons/bi";
 
-const UserProfile = () => {
+const UserProfile = ({ backgroundAudio }) => {
+  const [userPage, setUserPage] = useState(1);
   const [userInfo, setUserInfo] = useState({});
+  const id = userInfo?._id;
   const navigate = useNavigate();
 
   const { dispatch } = useContext(AuthContext);
   const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))?._id}`);
 
   useEffect(() => {
-    console.log(data);
+    // console.log(data);
     setUserInfo(data);
   }, [data]);
 
-  useEffect(() => {
-    console.log(userInfo);
-  }, [userInfo]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,34 +38,6 @@ const UserProfile = () => {
     }));
   };
 
-  const handleProfilePictureChange = async (e) => {
-    const file = e.target.files[0];
-    try {
-      const data = new FormData();
-      data.append("file", file);
-      data.append("upload_preset", "HotelBook.com");
-      data.append("cloud_name", "dox9ptswj");
-      const uploadRes = await axios.post(
-        "https://api.cloudinary.com/v1_1/dox9ptswj/image/upload",
-        data
-      );
-
-      const { url } = await uploadRes.data;
-      console.log(url);
-
-      // Update the profile picture in the state
-      setUserInfo((prevData) => ({
-        ...prevData,
-        [e.target.name]: url,
-      }));
-
-      // Call handleProfileUpdate after the state has been updated
-      console.log("updated UserInfo");
-      handleProfileUpdate();
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -73,8 +48,7 @@ const UserProfile = () => {
   const handleProfileUpdate = async () => {
     dispatch({ type: "LOGIN_START" });
     try {
-      const response = await axios.patch(
-        `${baseURL}/user/${localStorage.getItem("access_token")}/${userInfo?._id}`,
+      const response = await axios.patch(`${baseURL}/user/${localStorage.getItem("access_token")}/${id}`,
         userInfo
       );
       console.log(response.data);
@@ -85,6 +59,28 @@ const UserProfile = () => {
     }
   };
 
+  // const handleProfileUpdate = async () => {
+  //   dispatch({ type: "LOGIN_START" });
+  //   try {
+  //     const response = await axios.patch(
+  //       `${baseURL}/user/${localStorage.getItem("access_token")}/${userInfo?._id}`,
+  //       userInfo
+  //     );
+  //     // console.log(response.data);
+  //     dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
+  //     // console.log("Updated successfully");
+  //   } catch (error) {
+  //     console.error('Error updating user profile:', error);
+  //   }
+  // };
+
+  const { volume, setVolume } = useContext(VolumeContext);
+  const handleVolumeChange = (event) => {
+    const volumeValue = event.target.value;
+    setVolume(volumeValue);
+  };
+
+
   return (
     <div className='user-profile-page-container'>
       <div className='user-profile-page'>
@@ -92,6 +88,20 @@ const UserProfile = () => {
           <div className='back-btn'>
             <button className='back-btn' onClick={() => { navigate(-1) }}><Back color="black" /></button>
           </div>
+        </div>
+        <div className='background-Volume-controller'>
+          <GoUnmute size='24px' color='white' />
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.2"
+            value={volume}
+            onChange={handleVolumeChange}
+            className="background-Volume-controller-input"
+            style={{ transform: 'rotate(270deg)' }}
+          />
+          <GoMute size='24px' color='white' />
         </div>
         <div className="profile-picture">
           {userInfo.profilePicture ? (
@@ -106,15 +116,14 @@ const UserProfile = () => {
           )}
         </div>
 
-        {/* <input className='profilePicture-input' name='profilePicture' id='profilePicture' type="file" onChange={handleProfilePictureChange} /> */}
 
         <div className='username'>{userInfo?.username}</div>
-        <div className='profile-options'>
+        {userPage === 1 && <div className='profile-options'>
           <div className='profile-option'>
             <ManageSubs color="white" />
             <p className='profile-option-text'>Manage Subscription</p>
           </div>
-          <div className='profile-option'>
+          <div className='profile-option' onClick={() => setUserPage(2)}>
             <UserIcon color="white" />
             <p className='profile-option-text'>Account Details</p>
           </div>
@@ -126,7 +135,45 @@ const UserProfile = () => {
             <Logout color="white" />
             <p className='profile-option-text'>Log Out</p>
           </div>
-        </div>
+        </div>}
+
+        {userPage === 2 && <div className='profile-options'>
+          <div className='profile-option'>
+            <UserIcon color="white" />
+            <p className='profile-option-text'>{userInfo?.username}</p>
+          </div>
+          <div className='profile-option' onClick={() => { }}>
+            <AiOutlineMail size="24px" color="white" />
+            <p className='profile-option-text'>{userInfo?.email}</p>
+          </div>
+          <div className='profile-option'>
+            <AiOutlinePhone size='24px' color="white" />
+            <p className='profile-option-text'>{userInfo?.phone || "1234567890"}</p>
+          </div>
+          <div className='profile-option' onClick={() => setUserPage(3)}>
+            <BiEdit size='24px' color="white" />
+            <p className='profile-option-text'>Edit</p>
+          </div>
+        </div>}
+
+        {userPage === 3 && <div className='profile-options'>
+          <div className='profile-option'>
+            <UserIcon color="white" />
+            <input value={userInfo.username} name='username' placeholder='username' onChange={(e) => handleChange(e)} />
+          </div>
+          <div className='profile-option' onClick={() => { }}>
+            <AiOutlineMail size="24px" color="white" />
+            <input value={userInfo.email} name='email' placeholder='email' onChange={(e) => handleChange(e)} />
+          </div>
+          <div className='profile-option'>
+            <AiOutlinePhone size='24px' color="white" />
+            <input value={userInfo.phone} name='phone' placeholder='phone' onChange={(e) => handleChange(e)} />
+          </div>
+          <div className='profile-option' onClick={() => handleProfileUpdate()}>
+            <BiEdit size='24px' color="white" />
+            <p className='profile-option-text'>Save</p>
+          </div>
+        </div>}
       </div>
     </div>
   );

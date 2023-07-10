@@ -73,17 +73,26 @@
 .MoodMeter-chart {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: absolute;
-    right: 17px;
-    width: 55%;
-    max-width: 280px;
-    height: 78%;
-    max-height: 180px;
+    width: 95%;
 }
 
-@media screen and (max-width:450px){
-    .MoodMeter-chart{
-        right: 7px;
-    }
+.MoodMeter-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-family: Poppins;
+    font-weight: 500;
+    margin-left: 32px;
+}
+
+.mood-chart {
+    width: 100%;
+    max-width: 350px;
+    height: 90%;
+    max-height: 220px;
+    background-color: #FFF;
+    border-radius: 12px;
 }

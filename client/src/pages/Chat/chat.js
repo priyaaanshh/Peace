@@ -127,7 +127,7 @@ const Chat = () => {
     useEffect(() => {
         socket.on("receive_message", async (data) => {
             console.log("Updated by receive_message");
-            console.log(data);
+            // console.log(data);
             // setMessages((list) => [...list, data]);
         });
     }, []);
@@ -225,8 +225,8 @@ const Chat = () => {
 
     const handleCreateGroup = async (user, chat) => {
         setOpenCreateGroup(!openCreateGroup);
-        console.log(newGroupName);
-        console.log(selectedMembers);
+        // console.log(newGroupName);
+        // console.log(selectedMembers);
 
         if (newGroupName !== "") {
             const data = {
@@ -250,12 +250,12 @@ const Chat = () => {
         }
     }
     useEffect(() => {
-        console.log(selectedMembers);
+        // console.log(selectedMembers);
     }, [selectedMembers])
 
 
     useEffect(() => {
-        console.log(openedChat);
+        // console.log(openedChat);
         joinRoom(openedChat.joinedRoom);
     }, [openedChat]);
 

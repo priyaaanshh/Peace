@@ -34,7 +34,6 @@ const Assesment = () => {
     values.push(value);
   }
 
-
   return (
     <div className='home'>
       <Sidebar Page={"Assessment"} />
@@ -50,7 +49,10 @@ const Assesment = () => {
           <div className="MoodMeter">
             <MoodMeter />
             <div className='MoodMeter-chart'>
-              <CommonChart values={values} label={labels}/>
+              <div className='MoodMeter-text'>Mood Meter</div>
+              <div className='mood-chart'>
+                <CommonChart values={values} label={labels} />
+              </div>
             </div>
           </div>
         </div>
@@ -58,7 +60,7 @@ const Assesment = () => {
         <div className='home-page-heading'>Recent Survey</div>
 
         <div className='mood-score-list'>
-          {me?.moodScores?.reverse().map((item, index) => {
+          {me?.moodScores?.map((item, index) => {
             return (
               <div className='mood-score-tile' key={index}>
                 <div className='mood-tile-left'>

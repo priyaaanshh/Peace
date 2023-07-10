@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import homepglogo from '../../assets/home-page-logo.png'
 import HomeLogo from '../../assets/svg/home-logo';
 import Right from '../../assets/svg/right';
@@ -10,6 +10,8 @@ import Book from '../../assets/svg/book';
 import Present from '../../assets/svg/present';
 import { Sling as Hamburger } from 'hamburger-react';
 import { useNavigate } from 'react-router-dom';
+import { VolumeContext } from '../../Context/volumeContext';
+import { GoMute, GoUnmute } from "react-icons/go";
 
 
 
@@ -74,9 +76,9 @@ const Sidebar = ({ isOpen, setOpen, Page, displayTrue }) => {
                 })}
 
             </div>
-            <div ></div>
-            <div ></div>
-            <div ></div>
+            <div></div>
+            <div></div>
+            <div></div>
             <div className='PrivacyText'>Privacy Policy</div>
         </div>
     )
