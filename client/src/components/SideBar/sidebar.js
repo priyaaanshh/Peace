@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Sidebar = ({isOpen,setOpen, Page, displayTrue }) => {
+const Sidebar = ({ isOpen, setOpen, Page, displayTrue }) => {
     const navigate = useNavigate();
 
 
@@ -60,7 +60,7 @@ const Sidebar = ({isOpen,setOpen, Page, displayTrue }) => {
             <div className='hamburger-on-sidebar hamburger-menu-button'>
                 < Hamburger toggled={isOpen} toggle={setOpen} />
             </div>
-            <img src={homepglogo} alt='' />
+            <img src={homepglogo} alt='' onClick={() => navigate('/')} style={{ cursor: "pointer" }} />
             <div className='sidebar-buttons'>
 
                 {SideBarData.map((data, index) => {
