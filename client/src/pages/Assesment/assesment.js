@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { ReactComponent as MoodMeter } from '../../assets/svg/MoodMeter.svg';
 import { ReactComponent as GetRewards } from '../../assets/svg/getRewards.svg';
 import DotMenu from '../../assets/svg/dot menu';
-import Chart from '../../components/Chart/chart.tsx';
 import Sidebar from '../../components/SideBar/sidebar';
 import Navbar from '../../components/Navbar/navbar';
 import CommonChart from '../../components/Chart/commonChart';

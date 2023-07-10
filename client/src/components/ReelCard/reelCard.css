@@ -3,6 +3,7 @@
     align-items: start;
     justify-content: center;
     position: relative;
+    cursor: pointer;
 }
 
 .reel-card-image {

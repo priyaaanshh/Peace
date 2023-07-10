@@ -22,7 +22,7 @@ const Navbar = ({ isHomePage, searchBar, mainHeading }) => {
             <div className='nav-text'>
                 <div className='hamburger-menu-button'>
                     < Hamburger toggled={isOpen} toggle={setOpen} />
-                    {isOpen?<Sidebar isOpen={isOpen} setOpen={setOpen} Page={!isHomePage?mainHeading:"Home"} displayTrue={true}/>:<></>}
+                    {isOpen ? <Sidebar isOpen={isOpen} setOpen={setOpen} Page={!isHomePage ? mainHeading : "Home"} displayTrue={true} /> : <></>}
                 </div>
                 {mainHeading ? <p className='home-main-heading' style={{ fontWeight: "600" }}>{mainHeading} </p> : <></>}
                 {isHomePage ? <div className='greeting-container'>
@@ -34,6 +34,7 @@ const Navbar = ({ isHomePage, searchBar, mainHeading }) => {
             {searchBar ?
                 <SearchBar /> : <></>}
             <NavButtons />
+            
         </div>
 
     )

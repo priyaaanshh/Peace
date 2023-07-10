@@ -109,6 +109,63 @@
     line-height: normal;
 }
 
+.notification-pannel {
+    position: absolute;
+    right: 105px;
+    top: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
+
+
+    width: 90%;
+    max-width: 450px;
+    padding-bottom: 8px;
+
+    z-index: 2;
+}
+
+.noti-logo {
+    color: #000;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.36px;
+
+    margin: 12px 0px;
+}
+
+.notification {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 95%;
+    margin: 5px 0px;
+    border-radius: 12px;
+    background-color: #DADADA;
+}
+
+.notification>div {
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    padding: 5px 0px;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    max-width: 90%;
+}
+
 @media screen and (max-width: 768px) {
     .home-sidebar {
         display: none;
@@ -120,5 +177,11 @@
 
     .hamburger-menu-button {
         display: flex;
+    }
+
+    .notification-pannel {
+        right: 20px;
+        top: 70px;
+
     }
 }
