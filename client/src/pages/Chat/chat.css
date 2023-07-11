@@ -1,4 +1,4 @@
-.social-forum-page-row{
+.social-forum-page-row {
     display: flex;
     align-items: start;
     justify-content: start;
@@ -249,14 +249,50 @@
 
 .msg {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: start;
+    flex-direction: column;
     margin: 5px;
     padding: 12px;
     font-size: 16px;
+    font-family: Poppins;
     color: #fff;
     border-radius: 12px;
     max-width: 320px;
+}
+
+.right-side-msg>p,
+.left-side-msg>p {
+    margin: 0;
+}
+
+.msg-author {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    font-weight: 600;
+    color: rgb(0, 29, 255);
+    margin-bottom: 5px;
+}
+
+.msg-time {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: end;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.msg-text {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 18px;
+    font-weight: 400;
+    min-width: 100px;
 }
 
 .left-msg-tile {
@@ -279,16 +315,20 @@
     color: #000000;
 }
 
+.left-side-msg>.msg-time {
+    color: #333;
+}
+
+.right-side-msg>.msg-time {
+    color: #ccc;
+}
+
 .right-side-msg {
     color: #fff;
     border-radius: 20px;
     background: rgba(17, 63, 103, 0.60);
 }
 
-.right-side-msg>p,
-.left-side-msg>p {
-    margin: 0;
-}
 
 .chat-bottom {
     display: flex;
@@ -298,7 +338,7 @@
     border-radius: 20px;
     overflow: hidden;
     width: 120%;
-    height: 60px;
+    min-height: 60px;
     margin-bottom: 12px;
     background-color: #cfcdcd;
 }
@@ -307,7 +347,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    min-height: 60px;
     width: 100%;
     padding: 0;
     margin: 0;
@@ -321,7 +361,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    min-height: 60px;
     width: 100px;
     border: none;
     cursor: pointer;
@@ -331,8 +371,9 @@
     background-color: #fff;
     outline: none;
 }
-@media screen and (max-width:768px){
-    .social-forum-page-row{
+
+@media screen and (max-width:768px) {
+    .social-forum-page-row {
         flex-direction: column;
     }
 }

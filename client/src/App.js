@@ -26,11 +26,19 @@ const MainComponent = () => {
   const backgroundAudio = useRef(null);
 
   useEffect(() => {
-    if (location.pathname === "/player") {
-      setPreVolume(backgroundAudio.current.volume);
+    if (location.pathname === "/login" ||
+      location.pathname === "/signUp" ||
+      location.pathname === "/payment" ||
+      location.pathname === "/onBoarding" ||
+      location.pathname === "/onBoarding/continue" ||
+      location.pathname === "/player") {
+      if (backgroundAudio.current?.volume !== 0) {
+        setPreVolume(backgroundAudio.current.volume);
+      }
       backgroundAudio.current.volume = 0;
       setVolume(0);
     } else {
+      // console.log(location, preVolume);
       setVolume(preVolume);
       backgroundAudio.current.volume = preVolume;
     }
@@ -45,10 +53,21 @@ const MainComponent = () => {
     if (backgroundAudio?.current) {
       backgroundAudio.current.volume = volume;
     }
-    if (backgroundAudio.current && location.pathname !== "/player") {
+    if (backgroundAudio.current && !(location.pathname === "/login" ||
+      location.pathname === "/signUp" ||
+      location.pathname === "/payment" ||
+      location.pathname === "/onBoarding" ||
+      location.pathname === "/onBoarding/continue" ||
+      location.pathname === "/player")) {
       setPreVolume(volume);
+      // console.log("preVolume changed")
     }
   }, [volume])
+
+  useEffect(() => {
+    // console.log(preVolume)
+  }, [preVolume])
+
 
   return (
     <div>
@@ -62,6 +81,9 @@ const MainComponent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/onBoarding" element={<OnBoarding />} />
+        <Route path="/onBoarding/continue" element={<OnBoardingSurvey />} />
+        <Route path="/player" element={<Player />} />
 
         <Route path="/" element={<Dashboard />} />
         <Route path="/meditate" element={<Meditate />} />
@@ -70,17 +92,12 @@ const MainComponent = () => {
         <Route path="/social-forum" element={<Chat />} />
         <Route path="/journaling" element={<Journaling />} />
         <Route path="/rewards" element={<Rewards />} />
-
-        <Route path="/onBoarding" element={<OnBoarding />} />
-        <Route path="/onBoarding/continue" element={<OnBoardingSurvey />} />
-
-        <Route path="/therapy/appointment" element={<DoctorProfile />} />
-
-        <Route path="/assesment/questions" element={<Question />} />
-
         <Route path="/user" element={<UserProfile backgroundAudio={backgroundAudio} />} />
 
-        <Route path="/player" element={<Player />} />
+
+        <Route path="/therapy/appointment" element={<DoctorProfile />} />
+        <Route path="/assesment/questions" element={<Question />} />
+
       </Routes>
     </div>
   );

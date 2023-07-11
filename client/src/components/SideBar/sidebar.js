@@ -57,6 +57,13 @@ const Sidebar = ({ isOpen, setOpen, Page, displayTrue }) => {
             icon: <Present color={`${Page === 'Rewards' ? "white" : "#C6C8D3"}`} />,
         },
     ];
+
+    const { volume, setVolume } = useContext(VolumeContext);
+    const handleVolumeChange = (event) => {
+        const volumeValue = event.target.value;
+        setVolume(volumeValue);
+    };
+
     return (
         <div className={` ${displayTrue ? "show-side-bar" : "home-sidebar"}`}>
             <div className='hamburger-on-sidebar hamburger-menu-button'>
@@ -74,10 +81,26 @@ const Sidebar = ({ isOpen, setOpen, Page, displayTrue }) => {
                         </button>
                     );
                 })}
+                <div></div>
+                <div></div>
+                <div className='background-Volume-controller'>
+                    <GoMute size='24px' color='white' />
+                    <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.2"
+                        value={volume}
+                        onChange={handleVolumeChange}
+                        className="background-Volume-controller-input"
+                        // style={{ transform: 'rotate(270deg)' }}
+                    />
+                    <GoUnmute size='24px' color='white' />
+                </div>
 
+                <div></div>
+                <div></div>
             </div>
-            <div></div>
-            <div></div>
             <div></div>
             <div className='PrivacyText'>Privacy Policy</div>
         </div>

@@ -274,7 +274,7 @@ const Chat = () => {
                                 <button className='back-btn'
                                     style={{ backgroundColor: "#C0B1D2" }}
                                     onClick={() => { setAddFriendPage(false) }}><Back color="black" /></button>}
-                            <SearchBar onChats={true}/>
+                            <SearchBar onChats={true} />
                         </div>
                         {addFriendPage === false ? <div className='chat-users-container-btn-row'>
                             <button className='chat-users-btn' onClick={() => { setOpenChat(true); setOpenCreateGroup(false); }}>Friends</button>
@@ -399,7 +399,11 @@ const Chat = () => {
                             {messages?.map((item, i) => {
                                 return (
                                     <div className={`${item?.author === me?.username ? "right-msg-tile" : "left-msg-tile"}`} key={i}>
-                                        <div className={`msg ${item?.author === me?.username ? "right-side-msg" : "left-side-msg"}`} ><p>{item?.message}</p></div>
+                                        <div className={`msg ${item?.author === me?.username ? "right-side-msg" : "left-side-msg"}`} >
+                                            <p className='msg-author'>{item?.author === me?.username ? "You" : item?.author}</p>
+                                            <p className='msg-text'>{item?.message}</p>
+                                            <p className='msg-time'>{item?.time}</p>
+                                        </div>
                                     </div>
                                 )
                             })}

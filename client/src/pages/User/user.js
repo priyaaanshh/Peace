@@ -10,8 +10,6 @@ import ManageSubs from '../../assets/svg/credit card';
 import UserIcon from '../../assets/svg/user';
 import Logout from '../../assets/svg/exit';
 import LockIcon from '../../assets/svg/lock';
-import { GoMute, GoUnmute } from "react-icons/go";
-import { VolumeContext } from '../../Context/volumeContext';
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 
@@ -59,26 +57,6 @@ const UserProfile = ({ backgroundAudio }) => {
     }
   };
 
-  // const handleProfileUpdate = async () => {
-  //   dispatch({ type: "LOGIN_START" });
-  //   try {
-  //     const response = await axios.patch(
-  //       `${baseURL}/user/${localStorage.getItem("access_token")}/${userInfo?._id}`,
-  //       userInfo
-  //     );
-  //     // console.log(response.data);
-  //     dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
-  //     // console.log("Updated successfully");
-  //   } catch (error) {
-  //     console.error('Error updating user profile:', error);
-  //   }
-  // };
-
-  const { volume, setVolume } = useContext(VolumeContext);
-  const handleVolumeChange = (event) => {
-    const volumeValue = event.target.value;
-    setVolume(volumeValue);
-  };
 
 
   return (
@@ -89,20 +67,7 @@ const UserProfile = ({ backgroundAudio }) => {
             <button className='back-btn' onClick={() => { navigate(-1) }}><Back color="black" /></button>
           </div>
         </div>
-        <div className='background-Volume-controller'>
-          <GoUnmute size='24px' color='white' />
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.2"
-            value={volume}
-            onChange={handleVolumeChange}
-            className="background-Volume-controller-input"
-            style={{ transform: 'rotate(270deg)' }}
-          />
-          <GoMute size='24px' color='white' />
-        </div>
+        
         <div className="profile-picture">
           {userInfo.profilePicture ? (
             <label className='profilePicture-label' htmlFor='profilePicture'>
