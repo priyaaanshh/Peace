@@ -4,7 +4,7 @@
     justify-content: space-between;
     height: 100vh;
     background-color: black;
-    background-image: url("../../assets/onboarding-bg.png");
+    background-image: url(https://i.pinimg.com/originals/16/3d/50/163d506c0e4d603c598d92d7ac425896.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: left;
@@ -25,7 +25,8 @@
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     height: 100%;
-    background-color: white;
+    background-color: rgba(20, 4, 78, 0.695);
+    backdrop-filter: blur(4px);
 }
 
 .onboarding-left-column {
@@ -33,28 +34,27 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    justify-content: start;
+    justify-content: center;
     gap: 16px;
     width: 100%;
     max-width: 550px;
     height: 100%;
-    background-color: white;
 }
 
 .onboarding-main-heading {
-    color: #000;
+    color: #ffffff;
     font-size: 38px;
     margin: 0;
 }
 
 .onboarding-sub-heading {
-    color: #000;
+    color: #ffffff;
     font-size: 22px;
     margin: 0;
 }
 
 .onboarding-question {
-    color: #000;
+    color: #ffffff;
     font-size: 22px;
     font-weight: 600;
     margin: 0;
@@ -70,23 +70,24 @@
     flex-shrink: 0;
     border: none;
     border-radius: 20px;
-    background: #FFF;
+    color: #FFF;
+    background: #ffffff71;
+    backdrop-filter: blur(6px);
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
     cursor: pointer;
 }
 
 .onboarding-btn-selected {
-    background: #113F67;
+    background: #78b7ef;
 }
 
 .onboarding-btn-text {
-    color: #000;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
 }
 
 .onboarding-btn-text-selected {
-    color: #FFF;
+    color: #000000;
 }
 
 .onboarding-btn-continue {
@@ -98,8 +99,8 @@
     margin-top: 15px;
     border: none;
     border-radius: 20px;
-    color: #FFF;
-    font-size: 18px;
+    font-size: 20px;
+    color: #333;
     font-family: Poppins;
     font-weight: 500;
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
@@ -107,11 +108,12 @@
 }
 
 .continue-btn-unselected {
-    background: #1e1c1cc2;
+    background: #ffffffac;
 }
 
 .continue-btn-selected {
-    background: #79D17F;
+    background: #c4c26f;
+    color: black;
 }
 
 .onboarding-btn-skip {
@@ -125,7 +127,7 @@
     color: #000;
     font-size: 18px;
     font-family: Poppins;
-    background: #E2E2E2;
+    background: #ffffff88;
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
     cursor: pointer;
 }
@@ -143,12 +145,33 @@
 }
 
 .OnBoardingSurvey-page-bg1 {
-    background-image: url("../../assets/onboard-survey-bg1.png");
-    background-size:120vh;
+    background-size: cover;
+    background-position: right;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    animation: slide 10s linear infinite;
+    background-image: url(https://cdn.pixabay.com/photo/2018/08/23/07/35/thunderstorm-3625405_1280.jpg);
 }
 
 .OnBoardingSurvey-page-bg2 {
-    background-image: url("../../assets/onboard-survey-bg2.png");
+    background-image: url(https://get.pxhere.com/photo/beach-landscape-sea-tree-water-nature-outdoor-ocean-horizon-silhouette-light-cloud-sky-sun-sunrise-sunset-sunlight-morning-lake-dawn-atmosphere-summer-travel-dusk-evening-reflection-scenic-color-natural-scenery-scene-sundown-afterglow-atmospheric-phenomenon-628743.jpg);
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    animation: slide 10s linear infinite;
+}
+
+@keyframes slide {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
 }
 
 .onboarding-back-btn {
@@ -173,7 +196,9 @@
     width: 100%;
 }
 
-.onboarding-column-img-container>img {
+.onboarding-column-img-container>svg {
     max-height: 400px;
     max-width: 400px;
+    height: 100%;
+    width: 100%;
 }

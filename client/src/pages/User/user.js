@@ -23,7 +23,6 @@ const UserProfile = ({ backgroundAudio }) => {
   const { data } = useFetch(`${baseURL}/user/userInfo/${localStorage.getItem("access_token")}/${JSON.parse(localStorage.getItem("user"))?._id}`);
 
   useEffect(() => {
-    // console.log(data);
     setUserInfo(data);
   }, [data]);
 
@@ -49,9 +48,10 @@ const UserProfile = ({ backgroundAudio }) => {
       const response = await axios.patch(`${baseURL}/user/${localStorage.getItem("access_token")}/${id}`,
         userInfo
       );
-      console.log(response.data);
+      // console.log(response.data);
       dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
-      console.log("Updated successfully");
+      // console.log("Updated successfully");
+      setUserPage(2);
     } catch (error) {
       console.error('Error updating user profile:', error);
     }

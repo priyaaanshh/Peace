@@ -37,27 +37,27 @@ const OnBoarding = () => {
                     <p className='onboarding-question'>What we can help with today?</p>
 
                     <button className={`onboarding-btn ${selectedOption === 1 ? "onboarding-btn-selected" : ""}`} onClick={() => onSelect(1)}>
-                        <Sleep color={`${selectedOption === 1 ? "white" : "black"}`} />
+                        <Sleep color={`${selectedOption === 1 ? "black" : "white"}`} />
                         <p className={`onboarding-btn-text ${selectedOption === 1 ? "onboarding-btn-text-selected" : ""}`}>Improve Sleep Quality</p>
                     </button>
 
                     <button className={`onboarding-btn ${selectedOption === 2 ? "onboarding-btn-selected" : ""}`} onClick={() => onSelect(2)}>
-                        <Drop color={`${selectedOption === 2 ? "white" : "black"}`} />
+                        <Drop color={`${selectedOption === 2 ? "black" : "white"}`} />
                         <p className={`onboarding-btn-text ${selectedOption === 2 ? "onboarding-btn-text-selected" : ""}`}>Reduce stress or anxiety</p>
                     </button>
 
                     <button className={`onboarding-btn ${selectedOption === 3 ? "onboarding-btn-selected" : ""}`} onClick={() => onSelect(3)}>
-                        <BookOpened color={`${selectedOption === 3 ? "white" : "black"}`} />
+                        <BookOpened color={`${selectedOption === 3 ? "black" : "white"}`} />
                         <p className={`onboarding-btn-text ${selectedOption === 3 ? "onboarding-btn-text-selected" : ""}`}>Improve focus</p>
                     </button>
 
                     <button className={`onboarding-btn ${selectedOption === 4 ? "onboarding-btn-selected" : ""}`} onClick={() => onSelect(4)}>
-                        <Leaf color={`${selectedOption === 4 ? "white" : "black"}`} />
+                        <Leaf color={`${selectedOption === 4 ? "black" : "white"}`} />
                         <p className={`onboarding-btn-text ${selectedOption === 4 ? "onboarding-btn-text-selected" : ""}`}>Self improvement</p>
                     </button>
 
                     <button className={`onboarding-btn ${selectedOption === 5 ? "onboarding-btn-selected" : ""}`} onClick={() => onSelect(5)}>
-                        <DotMenu color={`${selectedOption === 5 ? "white" : "black"}`} />
+                        <DotMenu color={`${selectedOption === 5 ? "black" : "white"}`} />
                         <p className={`onboarding-btn-text ${selectedOption === 5 ? "onboarding-btn-text-selected" : ""}`}>Something Else</p>
                     </button>
 

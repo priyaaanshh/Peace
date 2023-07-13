@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import './onBoarding.css'
 import Back from '../../assets/svg/back';
 import { useNavigate } from 'react-router-dom';
-import girlpeaceful from '../../assets/girlpeaceful.png'
-import page4img from '../../assets/page4-img.png'
+import { ReactComponent as Girlpeaceful } from '../../assets/svg/girlpeaceful.svg'
+import { ReactComponent as Ask } from '../../assets/svg/how_you_feel.svg'
+import { ReactComponent as Yoga } from '../../assets/svg/yoga.svg'
 
 const OnBoardingSurvey = () => {
     const navigate = useNavigate();
@@ -53,13 +54,18 @@ const OnBoardingSurvey = () => {
                             <button className="onboarding-btn" onClick={() => { setPageNum(1); setSelectedText("Indifferent") }}>
                                 <p className="onboarding-btn-text">Indifferent</p>
                             </button>
+
+                            <div className='onboarding-column-img-container'>
+                                <Ask />
+                            </div>  
                         </> : <></>
                         }
                         {pageNum === 1 ? <>
                             <p className='onboarding-main-heading'>That's OK</p>
                             <p className='onboarding-sub-heading'>Recognizing how you feel is an important part of mindfulness, so we’ll keep checking in with you.</p>
                             <div className='onboarding-column-img-container'>
-                                <img src={girlpeaceful} alt='' /></div>
+                                <Girlpeaceful />
+                            </div>
 
                             <button onClick={() => { setPageOneText(selectedText); setPageNum(2); setSelectedText("None"); }} className="onboarding-btn-continue continue-btn-selected">
                                 Continue
@@ -82,13 +88,18 @@ const OnBoardingSurvey = () => {
                                 <button className="onboarding-btn" onClick={() => { setPageNum(3); setSelectedText("I’ve meditated a lot") }}>
                                     <p className="onboarding-btn-text">I’ve meditated a lot</p>
                                 </button>
+
+                                <div className='onboarding-column-img-container'>
+                                    <Yoga style={{ maxHeight: "500px", maxWidth: "500px" }} />
+                                </div>
                             </> : <></>
                             }
                             {pageNum === 3 ? <>
                                 <p className='onboarding-sub-heading'>Congrats on taking your first step to a happier and healthier you.</p>
                                 <p className='onboarding-sub-heading'>We’ll make it easy for you to learn the basics of meditation.</p>
                                 <div className='onboarding-column-img-container'>
-                                    <img src={page4img} alt='' /></div>
+                                    <Yoga />
+                                </div>
 
                                 <button onClick={() => { navigate('/payment') }} className="onboarding-btn-continue continue-btn-selected">
                                     Continue

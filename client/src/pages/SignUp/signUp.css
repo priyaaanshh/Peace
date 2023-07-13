@@ -1,6 +1,6 @@
 .signup-container {
     background-color: black;
-    background-image: url(../../assets/signup-bg.jpg);
+    background-image: url(https://th.bing.com/th/id/R.9576355e1c98d62e810e1fa0c68c3b1d?rik=Bmv2adT4F2639g&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2fd%2f3%2f3%2f66222.jpg&ehk=gpfxsQYX6YkS7E%2bEXBhjDOgG%2fk7iCH%2fiWmvOOe6LX1M%3d&risl=&pid=ImgRaw&r=0);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -20,7 +20,6 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    background-color: rgba(27, 27, 27, 0.586);
 }
 
 .navBar-row>img {
@@ -40,14 +39,14 @@
     font-size: 18px;
     text-decoration: none;
     border-radius: 6px;
-    /* background-color: rgba(255, 255, 255, 0.7); */
     color: white;
 }
 
 
 .signup-box {
     transform: scale(0.83);
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.514);
+    backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,7 +60,7 @@
 
 .signup-column {
     transform: scale(1.05);
-    background-color: white;
+    /* background-color: white; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,7 +71,7 @@
 .signup-title {
     padding: 0;
     margin: 0;
-    color: #000;
+    color: #ffffff;
     text-align: center;
     font-size: 44px;
     font-family: "Poppins";
@@ -86,14 +85,14 @@
     align-items: center;
     flex-direction: row;
     gap: 5px;
-    color: #000;
+    color: #ffffff;
     text-align: center;
     font-size: 20px;
     font-weight: 600;
 }
 
 #blue-line {
-    color: #177ACF;
+    color: #5187eb;
 }
 
 .icon-box-row {
@@ -155,10 +154,11 @@
     align-items: center;
     justify-content: center;
     margin: 5px;
-    color: #ACADAC;
+    color: #ccc;
 }
 
 .tnc-lines {
+    color: #ffffff;
     font-size: 12px;
     margin: 0;
     padding: 0;
