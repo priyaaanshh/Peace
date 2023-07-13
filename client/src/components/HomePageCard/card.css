@@ -8,7 +8,8 @@
     margin-bottom: 4px;
     width: 280px;
     border-radius: 10px;
-    background: rgba(218, 218, 218, 0.50);
+    background: #FFFFFF73;
+    box-shadow: 0px 0px 12px 0px rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     cursor: pointer;
     position: relative;
@@ -19,12 +20,12 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    height: 15px;
-    width: 45px;
-    border-radius: 10px;
+    height: 25px;
+    width: 50px;
+    border-radius: 12px;
     background: rgba(0, 0, 0, 0.20);
     backdrop-filter: blur(10px);
-    color: #FFF;
+    color: #fff;
     font-size: 12px;
     font-family: Poppins;
     font-weight: 500;
@@ -37,7 +38,7 @@
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
 }
 
@@ -49,10 +50,10 @@
 }
 
 .CardHeading {
-    color: #113F67;
+    color: #000;
     margin: 0;
     margin-top: 5px;
-    font-size: 18px;
+    font-size: 20px;
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
@@ -71,13 +72,13 @@
     height: 6px;
     width: 6px;
     border-radius: 50%;
-    background-color: #113F67;
+    background-color: #000000bf;
 }
 
 .CardTileSubHeading {
-    color: #113F67;
+    color: #000000bf;
     margin: 0;
-    font-size: 14px;
+    font-size: 16px;
     font-family: Poppins;
     font-style: normal;
     font-weight: 500;

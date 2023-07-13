@@ -147,7 +147,7 @@ const CalendarComponent = ({ selectedNoteDate, setSelectedNoteDate }) => {
             </div>
             {showTime !== '' ? (
                 <>
-                    <div className="partition-line" style={{ border: '1px solid #DADADA' }}></div>
+                    <div className="partition-line" style={{ border: '1px solid #333' }}></div>
                     <div className="calendar-bottom-container">
                         <div className="calendar-bottom">
                             <div className="Today-text">TODAY</div>

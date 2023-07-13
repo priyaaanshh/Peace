@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url('../../assets/homepage-bg.png');
+    background-image: url(https://th.bing.com/th/id/R.9576355e1c98d62e810e1fa0c68c3b1d?rik=Bmv2adT4F2639g&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2fd%2f3%2f3%2f66222.jpg&ehk=gpfxsQYX6YkS7E%2bEXBhjDOgG%2fk7iCH%2fiWmvOOe6LX1M%3d&risl=&pid=ImgRaw&r=0);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -14,7 +14,8 @@
     align-items: center;
     justify-content: start;
     flex-direction: column;
-    background-image: linear-gradient(90deg, #393939b5, #3939398d);
+    background-color: #0b32e13a;
+    backdrop-filter: blur(5px);
     width: 100%;
     height: 100%;
     gap: 20px;
@@ -27,14 +28,13 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    /* flex-direction: column; */
     padding: 25px 0px;
     height: 15px;
     width: 100%;
-    background-color: #222326e3;
+    background-color: #0e10157c;
     border-radius: 20px;
     backdrop-filter: blur(5px);
-    border: 1px solid white;
+    border: 1px solid #cccccca9;
     box-shadow: 0px 0px 5px 2px rgba(255, 255, 255, 0.212);
     z-index: 3;
 }

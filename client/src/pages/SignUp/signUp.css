@@ -23,10 +23,11 @@
 }
 
 .navBar-row>img {
-    height: 60px;
+    height: 70px;
     margin-top: 6px;
     margin-bottom: 6px;
     margin-left: 15px;
+    cursor: pointer;
 }
 
 .auth-link {

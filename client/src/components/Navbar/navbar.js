@@ -21,7 +21,7 @@ const Navbar = ({ isHomePage, searchBar, mainHeading }) => {
         <div className='navbar'>
             <div className='nav-text'>
                 <div className='hamburger-menu-button'>
-                    < Hamburger toggled={isOpen} toggle={setOpen} />
+                    < Hamburger toggled={isOpen} toggle={setOpen} color='white' />
                     {isOpen ? <Sidebar isOpen={isOpen} setOpen={setOpen} Page={!isHomePage ? mainHeading : "Home"} displayTrue={true} /> : <></>}
                 </div>
                 {mainHeading ? <p className='home-main-heading' style={{ fontWeight: "600" }}>{mainHeading} </p> : <></>}

@@ -277,12 +277,12 @@ const Chat = () => {
                             <SearchBar onChats={true} />
                         </div>
                         {addFriendPage === false ? <div className='chat-users-container-btn-row'>
-                            <button className='chat-users-btn' onClick={() => { setOpenChat(true); setOpenCreateGroup(false); }}>Friends</button>
-                            <button className='chat-users-btn' onClick={() => { setOpenChat(false); }}>Group</button>
+                            <button className={`${openChat ? "chat-users-btn-active" : ""} chat-users-btn`} onClick={() => { setOpenChat(true); setOpenCreateGroup(false); }}>Friends</button>
+                            <button className={`${!openChat ? "chat-users-btn-active" : ""} chat-users-btn`} onClick={() => { setOpenChat(false); }}>Group</button>
                         </div>
 
                             : <div className='chat-users-container-btn-row'>
-                                <button className='chat-users-btn'>Add Friends</button>
+                                <button className='chat-users-btn-active chat-users-btn'>Add Friends</button>
                             </div>}
                         <div className='chat-users-seperator-line'></div>
 

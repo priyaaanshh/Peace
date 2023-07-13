@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-image: url('../../assets/homepage-bg.png');
+    background-image: url(https://img.freepik.com/free-photo/mountain-forest-beautiful-night-sky-with-stars_651396-1910.jpg?w=2000&t=st=1689255168~exp=1689255768~hmac=31adc8a779be6bf60514b057925ba436a640266109dad16b173905ca8ded9f9b);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -20,7 +20,7 @@
     align-items: center;
     justify-content: end;
     width: 100%;
-    padding-right: 5%;
+    padding-right: 15%;
 }
 
 .show-side-bar {
@@ -28,6 +28,7 @@
     top: 0px;
     left: 0px;
     z-index: 20;
+    animation: slide 0.3s linear;
 
     display: flex;
     flex-direction: column;
@@ -37,9 +38,23 @@
     width: 100%;
     max-width: 310px;
     min-width: 240px;
-    flex-shrink: 0;
-    background: rgba(218, 218, 218, 0.20);
+    background-image: linear-gradient(#0055ff, #00ff40);
     backdrop-filter: blur(50px);
+    box-shadow: 0px 0px 5000px 5px rgb(0, 0, 0);
+}
+
+@keyframes slide {
+    0% {
+        top: 0px;
+        left: -500px;
+        box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+        box-shadow: 0px 0px 1500px 5px rgb(0, 0, 0);
+    }
 }
 
 .home-sidebar {
@@ -52,8 +67,8 @@
     max-width: 310px;
     min-width: 240px;
     flex-shrink: 0;
-    background: rgba(218, 218, 218, 0.20);
-    backdrop-filter: blur(50px);
+    background-image: linear-gradient(#0055ff, #00ff40);
+    backdrop-filter: blur(5px);
 }
 
 
@@ -78,16 +93,16 @@
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    background-color: #FFFFFF;
+    background-color: #ffffff7c;
 }
 
 .sidebar-btn-selected {
-    background-color: #113F67;
+    background-color: #0e10157c;
 }
 
 .sidebar-btn-text {
     display: flex;
-    color: #525252;
+    color: #333;
     align-items: center;
     justify-content: start;
     width: 130px;
@@ -101,7 +116,7 @@
 }
 
 .PrivacyText {
-    color: #113F67;
+    color: #ffffff;
     font-size: 20px;
     font-family: Poppins;
     font-style: normal;

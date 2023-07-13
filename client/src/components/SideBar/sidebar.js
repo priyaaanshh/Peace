@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import homepglogo from '../../assets/home-page-logo.png'
+import Logo from '../../assets/logo.png'
 import HomeLogo from '../../assets/svg/home-logo';
 import Right from '../../assets/svg/right';
 import Leaf from '../../assets/svg/leaf';
@@ -24,37 +24,37 @@ const Sidebar = ({ isOpen, setOpen, Page, displayTrue }) => {
         {
             title: 'Home',
             path: '/',
-            icon: <HomeLogo color={`${Page === 'Home' ? "white" : "#C6C8D3"}`} />,
+            icon: <HomeLogo color={`${Page === 'Home' ? "white" : "#333"}`} />,
         },
         {
             title: 'Meditate',
             path: '/meditate',
-            icon: <Leaf color={`${Page === 'Medidate' ? "white" : "#C6C8D3"}`} />,
+            icon: <Leaf color={`${Page === 'Meditate' ? "white" : "#333"}`} />,
         },
         {
             title: 'Therapy Session',
             path: '/therapy-session',
-            icon: <Happy color={`${Page === 'Therapy Session' ? "white" : "#C6C8D3"}`} />,
+            icon: <Happy color={`${Page === 'Therapy Session' ? "white" : "#333"}`} />,
         },
         {
             title: 'Assessment',
             path: '/assessment',
-            icon: <Presentation color={`${Page === 'Assessment' ? "white" : "#C6C8D3"}`} />,
+            icon: <Presentation color={`${Page === 'Assessment' ? "white" : "#333"}`} />,
         },
         {
             title: 'Social Forum',
             path: '/social-forum',
-            icon: <SearchLogo color={`${Page === 'Social Forum' ? "white" : "#C6C8D3"}`} />,
+            icon: <SearchLogo color={`${Page === 'Social Forum' ? "white" : "#333"}`} />,
         },
         {
             title: 'Journaling',
             path: '/journaling',
-            icon: <Book color={`${Page === 'Journaling' ? "white" : "#C6C8D3"}`} />,
+            icon: <Book color={`${Page === 'Journaling' ? "white" : "#333"}`} />,
         },
         {
             title: 'Rewards',
             path: '/rewards',
-            icon: <Present color={`${Page === 'Rewards' ? "white" : "#C6C8D3"}`} />,
+            icon: <Present color={`${Page === 'Rewards' ? "white" : "#333"}`} />,
         },
     ];
 
@@ -67,9 +67,9 @@ const Sidebar = ({ isOpen, setOpen, Page, displayTrue }) => {
     return (
         <div className={` ${displayTrue ? "show-side-bar" : "home-sidebar"}`}>
             <div className='hamburger-on-sidebar hamburger-menu-button'>
-                < Hamburger toggled={isOpen} toggle={setOpen} />
+                < Hamburger toggled={isOpen} toggle={setOpen} color='white'/>
             </div>
-            <img src={homepglogo} alt='' onClick={() => navigate('/')} style={{ cursor: "pointer" }} />
+            <img src={Logo} alt='' onClick={() => navigate('/')} style={{ width: "150px", cursor: "pointer" }} />
             <div className='sidebar-buttons'>
 
                 {SideBarData.map((data, index) => {
@@ -77,7 +77,7 @@ const Sidebar = ({ isOpen, setOpen, Page, displayTrue }) => {
                         <button key={index} className={`sidebar-btn ${Page === data.title ? "sidebar-btn-selected" : ""}`} onClick={() => navigate(`${data.path}`)}>
                             {data.icon}
                             <p className={`sidebar-btn-text ${Page === data.title ? "sidebar-btn-text-selected" : ""}`}>{data.title}</p>
-                            {Page !== data.title ? <Right color="#C6C8D3" /> : <div></div>}
+                            {Page !== data.title ? <Right color="#333" /> : <div></div>}
                         </button>
                     );
                 })}
@@ -93,7 +93,7 @@ const Sidebar = ({ isOpen, setOpen, Page, displayTrue }) => {
                         value={volume}
                         onChange={handleVolumeChange}
                         className="background-Volume-controller-input"
-                        // style={{ transform: 'rotate(270deg)' }}
+                    // style={{ transform: 'rotate(270deg)' }}
                     />
                     <GoUnmute size='24px' color='white' />
                 </div>

@@ -1,1 +1,1 @@
-export const baseURL = "https://peace-server.vercel.app/api/v1";
+export const baseURL = "http://localhost:8080/api/v1";

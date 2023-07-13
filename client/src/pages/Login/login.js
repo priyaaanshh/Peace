@@ -84,7 +84,7 @@ const Login = () => {
     return (
         <div className='signup-container'>
             <div className='navBar-row'>
-                <img src={logo} alt='' />
+                <img src={logo} alt='' onClick={() => navigate('/')} />
                 <Link to='/signUp' className='auth-link SignUp-btn'>
                     Sign Up
                 </Link>

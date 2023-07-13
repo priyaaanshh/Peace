@@ -20,7 +20,7 @@
     padding-left: 50px;
     padding-right: 50px;
     border-radius: 10px;
-    background: #FFF;
+    background-image: linear-gradient(#0055ffd8, #00ff40d2);
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.12);
 
 }
@@ -65,9 +65,8 @@
 
     border-radius: 20px;
     cursor: pointer;
-    background: #113F67;
+    background: #0088ff;
 }
-
 .chat-users-btn {
     display: flex;
     align-items: center;
@@ -79,7 +78,7 @@
     cursor: pointer;
     height: max-content;
 
-    color: #113F67;
+    color: #ccc;
     font-size: 18px;
     font-family: Roboto;
     font-style: normal;
@@ -87,10 +86,12 @@
     line-height: normal;
     cursor: pointer;
 }
-
+.chat-users-btn-active{
+    color: #FFF;
+}
 .chat-users-seperator-line {
     width: 100%;
-    border: 1px solid #DADADA;
+    border: 1px solid #ccc;
     margin: 0;
     padding: 0;
     height: 0;
@@ -147,7 +148,7 @@
     justify-content: center;
     width: 50px;
     height: 50px;
-    background-color: #113F67;
+    background-color: #0088ff;
     border-radius: 50%;
 }
 
@@ -195,7 +196,7 @@
     overflow: hidden;
 
 
-    color: #000;
+    color: #1e1e1e;
     font-size: 14px;
     font-family: Poppins;
     font-style: normal;
@@ -208,6 +209,8 @@
     justify-content: center;
     width: max-content;
     height: 100%;
+    width: 90px;
+    margin-right: 8px;
 }
 
 .chat-users-group-create-btn {
@@ -220,6 +223,7 @@
     background-color: #113F67;
     color: #FFF;
     font-size: 16px;
+    margin-right: 8px;
 }
 
 .chat-users-msg-column {
@@ -272,7 +276,7 @@
     align-items: center;
     justify-content: start;
     font-weight: 600;
-    color: rgb(0, 29, 255);
+    color: #ccc;
     margin-bottom: 5px;
 }
 

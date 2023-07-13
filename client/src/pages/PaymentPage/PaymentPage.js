@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './PaymentPage.css'
-import PaymentBG from '../../assets/PaymentBG.jpg'
 import { FaCheckCircle, FaChevronDown } from 'react-icons/fa';
 import { BsCreditCard2Back } from 'react-icons/bs';
 import { ReactComponent as Icon1 } from '../../assets/svg/Card Svg/1.svg'
@@ -85,7 +84,7 @@ const PaymentPage = () => {
                         {contentNum === 2 ? <div className='openCardBtn'
                             onClick={() => setContentNum(3)}
                         >
-                            <BsCreditCard2Back color='black' />
+                            <BsCreditCard2Back color='white' />
                             <div>Credit or Debit Card</div>
                         </div> : <></>}
                     </div> : <></>}
@@ -143,7 +142,7 @@ const PaymentPage = () => {
                     </div> : <></>}
                 </div>
             </div>
-            <img src={PaymentBG} alt='' className='PaymentBG' />
+            <img src='https://r1.ilikewallpaper.net/ipad-pro-wallpapers/download-104391/pier-calm-nature-5k.jpg' alt='' className='PaymentBG' />
         </div>
     )
 }

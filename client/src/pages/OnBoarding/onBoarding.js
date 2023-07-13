@@ -28,7 +28,7 @@ const OnBoarding = () => {
     return (
         <div className='onboarding-page'>
             <div className='onboarding-logo'>
-                <img src={logo} alt='' />
+                <img src={logo} alt='' onClick={() => navigate('/')} />
             </div>
             <div className='onboarding-left-container'>
                 <div className='onboarding-left-column'>

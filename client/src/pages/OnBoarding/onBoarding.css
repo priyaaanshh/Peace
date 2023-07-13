@@ -9,14 +9,30 @@
     background-size: cover;
     background-position: left;
     font-family: Poppins;
+    position: relative;
 }
 
 .onboarding-logo {
-    margin-top: 6px;
-    margin-left: 15px;
+    position: absolute;
+    left: 0;
+    top: 15px;
+    z-index: 2;
+}
+
+.onboarding-logo>img {
+    max-width: 130px;
+    object-fit: cover;
+}
+
+@media screen and (max-width:778px) {
+    .onboarding-logo {
+        display: none;
+    }
 }
 
 .onboarding-left-container {
+    position: absolute;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,10 +80,10 @@
     display: flex;
     height: 70px;
     width: 100%;
-    padding: 28px 207px 28px 40px;
+    padding: 0 28px;
     align-items: center;
+    justify-content: start;
     gap: 20px;
-    flex-shrink: 0;
     border: none;
     border-radius: 20px;
     color: #FFF;
@@ -84,6 +100,7 @@
 .onboarding-btn-text {
     font-size: 20px;
     font-weight: 500;
+    margin: 0;
 }
 
 .onboarding-btn-text-selected {
@@ -149,15 +166,15 @@
     background-position: right;
     background-repeat: repeat-x;
     background-position: 0 0;
-    animation: slide 10s linear infinite;
+    animation: slide 20s linear infinite;
     background-image: url(https://cdn.pixabay.com/photo/2018/08/23/07/35/thunderstorm-3625405_1280.jpg);
 }
 
 .OnBoardingSurvey-page-bg2 {
-    background-image: url(https://get.pxhere.com/photo/beach-landscape-sea-tree-water-nature-outdoor-ocean-horizon-silhouette-light-cloud-sky-sun-sunrise-sunset-sunlight-morning-lake-dawn-atmosphere-summer-travel-dusk-evening-reflection-scenic-color-natural-scenery-scene-sundown-afterglow-atmospheric-phenomenon-628743.jpg);
+    background-image: url(https://th.bing.com/th/id/R.195092eac117d631661cd456a8af54e6?rik=3ulo91dKGrtlkw&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f11%2fCalm-Wallpaper-for-Desktop.jpg&ehk=aEoVihsfJaI5fGLpdERLmKzSF5wUVRRf8EiEPPZcCJ8%3d&risl=&pid=ImgRaw&r=0);
     background-repeat: repeat-x;
     background-position: 0 0;
-    animation: slide 10s linear infinite;
+    animation: slide 20s linear infinite;
 }
 
 @keyframes slide {

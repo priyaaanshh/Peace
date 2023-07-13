@@ -19,7 +19,7 @@ const Meditate = () => {
         <Navbar mainHeading={"Meditate"} searchBar={true} />
 
         <div className='option-row'>
-          <div className='option-row-item' style={{ background: "#113F67" }}>All</div>
+          <div className='option-row-item' style={{ background: "#FFFFFF73" }}>All</div>
           <div className='option-row-item'>Sleep</div>
           <div className='option-row-item'>Anxiety</div>
           <div className='option-row-item'>Inner Peace</div>

@@ -163,7 +163,7 @@ const DoctorProfile = () => {
                                 <div onClick={() => { selectSlot(15); }} className={`slot ${selectedSlot === 15 ? "selected-slot" : ""}`}>{slots[15]}</div>
                                 <div onClick={() => { selectSlot(16); }} className={`slot ${selectedSlot === 16 ? "selected-slot" : ""}`}>{slots[16]}</div>
                             </div>
-                            <button className='doctorPage-submit-btn' onClick={() => { handleSubmitSlot() }}>Submit</button>
+                            <div className='doctorPage-submit-btn' onClick={() => { handleSubmitSlot() }}>Submit</div>
                         </div>
                     </div>
                 </div>
@@ -291,13 +291,14 @@ h3  {
     padding: 2%;
     position: relative;
     text-align: center;
+    cursor:pointer;
 }
 .slick-next:before, .slick-prev:before {
     color: #000;
 }
 .center .slick-center h3 {
     color: #ffffff;
-    background: #113F67;
+    background: #000;
     opacity: 1;
     -ms-transform: scale(1.08);
     transform: scale(1.08);

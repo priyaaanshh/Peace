@@ -105,7 +105,7 @@ const SignUp = () => {
     return (
         <div className='signup-container'>
             <div className='navBar-row'>
-                <img src={logo} alt='' />
+                <img src={logo} alt='' onClick={() => navigate('/')} />
                 <Link to='/login' className='auth-link'>
                     <BsGlobe />
                     Sign In
