@@ -3,10 +3,10 @@ import './card.css'
 import sliderImage from '../../assets/default-slider-img.png'
 import { useNavigate } from 'react-router-dom'
 
-const Card = ({ image, CardHeading, CardSubHeading1, CardSubHeading2, CardSubHeading3, CardSubHeading4, }) => {
+const Card = ({ image, CardHeading, CardSubHeading1, CardSubHeading2, CardSubHeading3, CardSubHeading4, songs }) => {
     const navigate = useNavigate();
     return (
-        <div className='card-container' onClick={() => navigate('/player', { state: { image, CardHeading, CardSubHeading2, CardSubHeading4 } })}>
+        <div className='card-container' onClick={() => navigate('/player', { state: { image, CardHeading, CardSubHeading2, CardSubHeading4, songs } })}>
             <img src={image ? image : sliderImage} alt='' className='card-image' />
             <div className='CardDetails'>
                 <p className='CardHeading'>{CardHeading ? CardHeading : "Daily Trip"}</p>

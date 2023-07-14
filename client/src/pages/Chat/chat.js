@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ScrollToBottom from "react-scroll-to-bottom";
 import socketIo from "socket.io-client";
 import './chat.css'
@@ -10,15 +10,15 @@ import Back from '../../assets/svg/back';
 import SearchBar from '../../components/SearchBar/searchBar';
 import { ReactComponent as SendBtn } from '../../assets/svg/Vector.svg'
 import Navbar from '../../components/Navbar/navbar';
+import { AuthContext } from '../../Context/authContext';
 
 
 
 let socket;
 
 const ENDPOINT = "http://localhost:8080";
-const me = JSON.parse(localStorage.getItem("user"));
-
 const Chat = () => {
+    const me = useContext(AuthContext)?.user;
 
     const [allUsers, setallUsers] = useState([]);
     const [chats, setChats] = useState([]);
@@ -334,6 +334,7 @@ const Chat = () => {
                                         return (
                                             <MessageTile
                                                 handleOpenMessage={handleOpenMessage}
+                                                me={me}
                                                 user={{
                                                     username: chat.groupName,
                                                     profilePicture: groupChatLogo
@@ -393,7 +394,7 @@ const Chat = () => {
                                 {openedChat?.username ? <div className='chat-users-msg'>Online</div> : <></>}
                             </div>
                         </div>
-                        <div style={{ height: "18px" }}></div>
+                        {/* <div style={{ height: "18px" }}></div> */}
                         <div className='chat-users-seperator-line'></div>
                         <ScrollToBottom className='chat-msg-box'>
                             {messages?.map((item, i) => {
@@ -432,7 +433,7 @@ const Chat = () => {
 export default Chat
 
 
-const MessageTile = ({ handleOpenMessage, user, chat }) => {
+const MessageTile = ({ handleOpenMessage, me, user, chat }) => {
     return (
         <div
             className="chat-users-msg-tile"

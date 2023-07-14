@@ -10,41 +10,20 @@ import {
 import { BsShuffle, BsFillStopFill } from 'react-icons/bs';
 import { HiVolumeUp } from 'react-icons/hi';
 
-const PlayerController = ({ song }) => {
+const PlayerController = ({ songs }) => {
     const audioEl = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(1);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
-    const [nextSongIndex, setNextSongIndex] = useState(0);
     const [isShuffled, setIsShuffled] = useState(false);
 
-    const musicFolder = require.context('./music', true);
-    const songFiles = musicFolder.keys();
-    const songs = songFiles.map((key) => {
-        const song = musicFolder(key);
-        return {
-            title: `${key.substring(2, key.length - 4)}`,
-            src: song.default || song,
-        };
-    });
 
     useEffect(() => {
         setIsPlaying(true);
     }, [])
 
-
-    useEffect(() => {
-        setNextSongIndex(() => {
-            if (isShuffled) {
-                const randomIndex = Math.floor(Math.random() * songs.length);
-                return randomIndex !== currentSongIndex ? randomIndex : currentSongIndex;
-            } else {
-                return currentSongIndex === songs.length - 1 ? 0 : currentSongIndex + 1;
-            }
-        });
-    }, [currentSongIndex, isShuffled]);
 
     useEffect(() => {
         if (isPlaying) {
@@ -116,7 +95,7 @@ const PlayerController = ({ song }) => {
         <div className="player-controls">
             <audio
                 className="player-video"
-                src={song ? song : songs[currentSongIndex].src}
+                src={songs?.length !== 0 && songs[currentSongIndex] }
                 ref={audioEl}
                 onTimeUpdate={() => {
                     setCurrentTime(audioEl.current.currentTime);

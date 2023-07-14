@@ -63,11 +63,11 @@ const Sidebar = ({ isOpen, setOpen, Page, displayTrue }) => {
         const volumeValue = event.target.value;
         setVolume(volumeValue);
     };
-
+   
     return (
         <div className={` ${displayTrue ? "show-side-bar" : "home-sidebar"}`}>
             <div className='hamburger-on-sidebar hamburger-menu-button'>
-                < Hamburger toggled={isOpen} toggle={setOpen} color='white'/>
+                < Hamburger toggled={isOpen} toggle={setOpen} color='white' />
             </div>
             <img src={Logo} alt='' onClick={() => navigate('/')} style={{ width: "150px", cursor: "pointer" }} />
             <div className='sidebar-buttons'>
@@ -81,23 +81,22 @@ const Sidebar = ({ isOpen, setOpen, Page, displayTrue }) => {
                         </button>
                     );
                 })}
-                <div></div>
-                <div></div>
-                <div className='background-Volume-controller'>
-                    <GoMute size='24px' color='white' />
+                <div className='sidebar-btn '>
+                    <GoMute size='24px' color="#333" />
                     <input
                         type="range"
                         min="0"
                         max="1"
-                        step="0.2"
+                        step="0.01"
                         value={volume}
                         onChange={handleVolumeChange}
                         className="background-Volume-controller-input"
                     // style={{ transform: 'rotate(270deg)' }}
                     />
-                    <GoUnmute size='24px' color='white' />
+                    <GoUnmute size='24px' color="#333" />
                 </div>
-
+                <div></div>
+                <div></div>
                 <div></div>
                 <div></div>
             </div>

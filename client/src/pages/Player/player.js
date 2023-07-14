@@ -5,7 +5,15 @@ import userImage from '../../assets/PlayerImage.png';
 import Back from '../../assets/svg/back';
 import PlayerController from './playerController';
 
-const Player = ( ) => {
+
+
+const defaultSongs = [
+    'https://www.chosic.com/wp-content/uploads/2022/01/sugar-coat.mp3',
+    'https://www.chosic.com/wp-content/uploads/2021/07/Embrace.mp3',
+    'https://www.chosic.com/wp-content/uploads/2021/07/Embrace.mp3'
+];
+
+const Player = () => {
     const location = useLocation()?.state;
     const navigate = useNavigate();
 
@@ -40,10 +48,8 @@ const Player = ( ) => {
 
 
                 </div>
-
                 <div style={{ height: "50%" }}></div>
-
-                <PlayerController/>
+                <PlayerController songs={location?.songs?.length !== 0 ? location?.songs : defaultSongs} />
             </div>
         </div>
     );

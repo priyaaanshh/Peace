@@ -7,6 +7,7 @@ import useFetch from '../../hooks/useFetch';
 import Sidebar from '../SideBar/sidebar';
 
 const Navbar = ({ isHomePage, searchBar, mainHeading }) => {
+    const [time, setTime] = useState(new Date());
     const [userInfo, setUserInfo] = useState({});
     const [isOpen, setOpen] = useState(false);
 
@@ -15,6 +16,33 @@ const Navbar = ({ isHomePage, searchBar, mainHeading }) => {
     useEffect(() => {
         setUserInfo(data);
     }, [data]);
+
+    useEffect(() => {
+        const timerID = setInterval(() => {
+            setTime(new Date());
+        }, 1000);
+
+        return () => {
+            clearInterval(timerID);
+        };
+    }, []);
+
+    const getGreeting = () => {
+        const currentHour = time.getHours();
+        let greeting = '';
+
+        if (currentHour >= 0 && currentHour < 12) {
+            greeting = 'Good Morning';
+        } else if (currentHour >= 12 && currentHour < 17) {
+            greeting = 'Good Afternoon';
+        } else {
+            greeting = 'Good Evening';
+        }
+
+        return greeting;
+    };
+
+    const greeting = getGreeting();
 
     return (
 
@@ -26,7 +54,7 @@ const Navbar = ({ isHomePage, searchBar, mainHeading }) => {
                 </div>
                 {mainHeading ? <p className='home-main-heading' style={{ fontWeight: "600" }}>{mainHeading} </p> : <></>}
                 {isHomePage ? <div className='greeting-container'>
-                    <p className='home-main-heading'>Good Morning,  </p>
+                    <p className='home-main-heading'>{greeting},  </p>
                     <p className='home-main-heading' style={{ fontWeight: "600" }}>{userInfo?.username} </p>
                 </div> : <></>}
                 {isHomePage ? <p className='home-sub-heading'>"Your mental health is a priority. Take care of yourself, unplug, recharge, and remember that you are worth it."</p> : <></>}

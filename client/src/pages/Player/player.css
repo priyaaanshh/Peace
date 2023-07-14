@@ -1,5 +1,5 @@
 .playerBG {
-    background-image: url(https://images.pexels.com/photos/3265460/pexels-photo-3265460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+    background-image: url('../../assets/playerBG.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -31,7 +31,9 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    align-items: center;justify-content: center;display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
     text-align: center;
     margin: 0;
     margin-top: 12px;

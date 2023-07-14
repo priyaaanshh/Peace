@@ -1,4 +1,4 @@
-import { useEffect, useContext, useRef } from 'react';
+import { useEffect, useContext, useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Login from './pages/Login/login';
@@ -17,13 +17,13 @@ import Journaling from './pages/Journaling/journaling';
 import Rewards from './pages/Rewards/rewards';
 import Player from './pages/Player/player';
 import PaymentPage from './pages/PaymentPage/PaymentPage';
-import newSong from './pages/Player/backgroundAudio.mp3';
 import { VolumeContext } from './Context/volumeContext';
 
 const MainComponent = () => {
   const { volume, setVolume, preVolume, setPreVolume } = useContext(VolumeContext);
   const location = useLocation();
   const backgroundAudio = useRef(null);
+  const [userPlayed, setUserPlayed] = useState(false);
 
   useEffect(() => {
     if (location.pathname === "/login" ||
@@ -47,6 +47,7 @@ const MainComponent = () => {
   document.addEventListener("click", () => {
     if (backgroundAudio.current && location.pathname !== "/player") {
       backgroundAudio.current.play();
+      setUserPlayed(true);
     }
   });
   useEffect(() => {
@@ -68,12 +69,50 @@ const MainComponent = () => {
     // console.log(preVolume)
   }, [preVolume])
 
+  const backgroundSongs = [
+    'https://www.chosic.com/wp-content/uploads/2022/01/Where-The-Waves-Take-Us.mp3',
+    'https://www.chosic.com/wp-content/uploads/2021/06/Sweet.mp3',
+    'https://www.chosic.com/wp-content/uploads/2021/07/purrple-cat-wish-you-were-here.mp3',
+    'https://www.chosic.com/wp-content/uploads/2021/07/purrple-cat-star-bright.mp3',
+    'https://www.chosic.com/wp-content/uploads/2021/09/Inspiring-Acoustic-Guitar.mp3',
+    'https://www.chosic.com/wp-content/uploads/2021/07/purrple-cat-green-tea.mp3',
+  ];
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  const SkipSong = (forwards = true) => {
+    setCurrentSongIndex((prevIndex) =>
+      prevIndex === backgroundSongs.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+
+  const progress = (currentTime / duration) * 100 || 0;
+
+  useEffect(() => {
+    if (progress === 100) {
+      SkipSong(true);
+      // console.log("skip....")
+    }
+    // console.log(progress);
+    if (userPlayed && progress === 0) {
+      // console.log("play....")
+      backgroundAudio.current.play();
+    }
+  }, [progress])
 
   return (
     <div>
       <div>
-        <audio autoPlay loop ref={backgroundAudio}>
-          <source src={newSong} />
+        <audio
+          src={backgroundSongs[currentSongIndex]}
+          ref={backgroundAudio}
+          onTimeUpdate={() => {
+            setCurrentTime(backgroundAudio.current.currentTime);
+            setDuration(backgroundAudio.current.duration);
+          }}
+        >
         </audio>
       </div>
       <Routes>
