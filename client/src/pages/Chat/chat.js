@@ -113,7 +113,7 @@ const Chat = () => {
                         message: currentMessage,
                         time: `${hours}:${minutes} ${ampm}`
                     };
-                    console.log(messages);
+                    // console.log(messages);
                     axios.put(`${baseURL}/chat/updateMessages`, { id: joinedRoom, message: newData });
                     setCurrentMessage("");
                 }
@@ -126,7 +126,7 @@ const Chat = () => {
 
     useEffect(() => {
         socket.on("receive_message", async (data) => {
-            console.log("Updated by receive_message");
+            // console.log("Updated by receive_message");
             // console.log(data);
             // setMessages((list) => [...list, data]);
         });
