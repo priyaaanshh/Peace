@@ -78,29 +78,30 @@ const MainComponent = () => {
     'https://www.chosic.com/wp-content/uploads/2021/07/purrple-cat-green-tea.mp3',
   ];
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
 
   const SkipSong = (forwards = true) => {
     setCurrentSongIndex((prevIndex) =>
       prevIndex === backgroundSongs.length - 1 ? 0 : prevIndex + 1
     );
   };
-
-
-  const progress = (currentTime / duration) * 100 || 0;
-
+  
   useEffect(() => {
-    if (progress === 100) {
-      SkipSong(true);
-      // console.log("skip....")
-    }
-    // console.log(progress);
-    if (userPlayed && progress === 0) {
-      // console.log("play....")
-      backgroundAudio.current.play();
-    }
-  }, [progress])
+    const interval = setInterval(() => {
+      const progress = (backgroundAudio.current?.currentTime / backgroundAudio.current?.duration) * 100 || 0;
+
+      if (progress === 100) {
+        SkipSong(true);
+        // console.log("skip....")
+      }
+      // console.log(progress);
+      if (userPlayed && progress === 0) {
+        // console.log("play....")
+        backgroundAudio.current.play();
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div>
@@ -108,10 +109,6 @@ const MainComponent = () => {
         <audio
           src={backgroundSongs[currentSongIndex]}
           ref={backgroundAudio}
-          onTimeUpdate={() => {
-            setCurrentTime(backgroundAudio.current.currentTime);
-            setDuration(backgroundAudio.current.duration);
-          }}
         >
         </audio>
       </div>
