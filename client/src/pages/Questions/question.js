@@ -115,7 +115,7 @@ const Question = () => {
                     </div>
                     <div className='session-book-card'>
                         <div className='card-Box'>
-                            {(formattedDate !== me?.moodScores?.[me.moodScores.length - 1]?.date || "") && questions?.map((question, index) => {
+                            {questions?.map((question, index) => {
                                 if (!question) {
                                     return null;
                                 }
