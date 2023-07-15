@@ -76,7 +76,7 @@ const Question = () => {
             console.log("Select all the answers");
             return;
         }
-        
+
         var lastMoodScore = me?.moodScores?.[me.moodScores.length - 1]?.moodScore || 0;
         const updatedMoodScore = [];
 
@@ -143,7 +143,7 @@ const Question = () => {
                                     </div>
                                 );
                             })}
-                            {(formattedDate !== me?.moodScores?.[me.moodScores.length - 1]?.date || "") && questions.length !== 0 ? <div className='doctorPage-submit-btn' onClick={() => { handleSubmitAnswer() }}>Submit</div> : <div className='question'>You've submitted all the Questions for Today</div>}
+                            {questions.length !== 0 ? <div className='doctorPage-submit-btn' onClick={() => { handleSubmitAnswer() }}>Submit</div> : <div className='question'>You've submitted all the Questions for Today</div>}
                         </div>
                     </div>
                 </div>
