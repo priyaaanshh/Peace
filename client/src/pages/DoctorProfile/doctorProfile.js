@@ -33,23 +33,15 @@ const slots = [
     "10:00 PM",
     "10:30 PM",
 ];
+
 const DoctorProfile = () => {
-
     const location = useLocation().state;
-    // console.log(location);
-
-
-
     const [popUpPages, setPopUpPages] = useState(0);
     const [selectedSlot, setSelectedSlot] = useState(0);
     const [doctorName, setDoctorName] = useState("Dr. Ignacio Hettinger");
 
     const selectSlot = (slotNum) => {
-        if (slotNum === selectedSlot) {
-            setSelectedSlot(0);
-        } else {
-            setSelectedSlot(slotNum);
-        }
+        setSelectedSlot(prevSlot => (prevSlot === slotNum ? 0 : slotNum));
     };
 
     const handleSubmitSlot = () => {
@@ -60,7 +52,7 @@ const DoctorProfile = () => {
                 setSelectedSlot(0);
             }, 5000);
         }
-    }
+    };
 
     const navigate = useNavigate();
     const getDateOnConsole = () => {
@@ -69,139 +61,145 @@ const DoctorProfile = () => {
 
     return (
         <div className='doctorProfilePage user-profile-page-container'>
-            {popUpPages === 0 ? <div className='user-profile-page doctorProfileBG'>
-                <div className='navbar'>
-                    <div className='back-btn'>
-                        <button className='back-btn' onClick={() => { navigate(-1) }}><Back color="black" /></button>
-                    </div>
-                </div>
-
-                <div className='doctorProfile'>
-                    <div className='user-profile-img'>
-                        <img src={location?.image ? location?.image : userImage} alt='' />
-                    </div>
-                    <p className='doctorName'>{location?.Name ? location?.Name : doctorName}</p>
-                    <p className='doctorProffesion'>Clinical psychologist</p>
-
-                    <div className='doctorDetailsRow'>
-                        <div className='row-box'>
-                            <div className='detail-sub-heading'>Paitent</div>
-                            <div className='detail-heading'>100+</div>
-                        </div>
-                        <div className='row-box'>
-                            <div className='detail-sub-heading'>Experiences</div>
-                            <div className='detail-heading'>10 years</div>
-                        </div>
-                        <div className='row-box'>
-                            <div className='detail-sub-heading'>Rating</div>
-                            <div className='detail-heading'>4.0</div>
-                        </div>
-                    </div>
-
-                    <div className='doctor-detail-text-box'>
-                        <p>
-                            <b>{location?.Name ? location?.Name : doctorName}</b> is a leading {location?.Profession ? location?.Profession : "psychiatrist"} based at The London Medical Specialist Clinic, who specialises in psychosis, depression, self-harm, psychotherapy, suicidal thoughts, bipolar illness and personality disorders. <b>{location?.Name ? location?.Name : doctorName} received her medical training and doctorate in psychiatry from the University of Rome in Italy. She has extensive clinical and research experience from both the USA and Europe. She has worked as a clinical lecturer at King's College's Institute of Psychiatry Maudsley Hospital since 2008. There, she conducts research on individuals who have experienced their first psychotic episode with a particular interest in metabolic anomalies, childhood maltreatment, and sexual function. She also has experience from her time spent caring for individuals with severe mental illness who were experiencing psychosis at the National Psychosis Unit. After serving as a consultant psychiatrist for an inpatient facility housing females who were at a high risk of self-harm and suicide, Dr Ignacio has extensive expertise working with patients who suffer from personality disorders.</b> She also deals with patients affected by anxiety and depression. <b>{location?.Name ? location?.Name : doctorName}</b>  has collaborated with the Italian health services to repatriate numerous citizens with mental health-related difficulties.
-                        </p>
-                    </div>
-
-
-                    <div className='reviewHeading'>Review (126)</div>
-
-
-                    <div className='doctor-detail-text-box customerReview-box'>
-                        <div className='customerReview'>
-                            <img src='https://i.pinimg.com/originals/7e/50/c1/7e50c1e9a5af3f7777b96569f05b6958.jpg' alt='' className='customerImg' />
-                            <div className='cutromerNameColumn'>
-                                <p>Elizabeth Feil</p>
-                                <StartRating />
-                            </div>
-                        </div>
-                        <p>
-                            <b>{location?.Name ? location?.Name : doctorName}</b> is an excellent {location?.Profession ? location?.Profession : "psychiatrist"}. <b>{location?.Name ? location?.Name : doctorName}</b> was very supportive. Creating a comfortable and safe environment during the consultations, was so helpful in coming to terms with things. Her explanations were excellent, encouraging you to think and consider wider aspects of your life. <b>Would definitely recommend her.</b>
-                        </p>
-                    </div>
-                    <button className='doctorProfile-btn' onClick={getDateOnConsole}>Next</button>
-                </div>
-            </div> : <></>}
-
-
-
-
-
-            {popUpPages === 1 ? <div className='session-book-page-container'>
-                <div className='session-book-page'>
+            {popUpPages === 0 && (
+                <div className='user-profile-page doctorProfileBG'>
                     <div className='navbar'>
                         <div className='back-btn'>
-                            <button className='back-btn' onClick={() => { setPopUpPages(0); }}><Back color="black" /></button>
+                            <button className='back-btn' onClick={() => navigate(-1)}>
+                                <Back color="black" />
+                            </button>
                         </div>
                     </div>
-                    <div className='session-book-card '>
-                        <div className='card-Box'>
-                            <div className='date-picker'>
-                                <DatePicker />
-                            </div>
-                            <div className='partition-line'></div>
-                            <p className='session-card-slot'>Morning</p>
-                            <div className='slot-container'>
-                                <div onClick={() => { selectSlot(1); }} className={`slot ${selectedSlot === 1 ? "selected-slot" : ""}`}>{slots[1]}</div>
-                                <div onClick={() => { selectSlot(2); }} className={`slot ${selectedSlot === 2 ? "selected-slot" : ""}`}>{slots[2]}</div>
-                                <div onClick={() => { selectSlot(3); }} className={`slot ${selectedSlot === 3 ? "selected-slot" : ""}`}>{slots[3]}</div>
-                                <div onClick={() => { selectSlot(4); }} className={`slot ${selectedSlot === 4 ? "selected-slot" : ""}`}>{slots[4]}</div>
-                                <div onClick={() => { selectSlot(5); }} className={`slot ${selectedSlot === 5 ? "selected-slot" : ""}`}>{slots[5]}</div>
-                                <div onClick={() => { selectSlot(6); }} className={`slot ${selectedSlot === 6 ? "selected-slot" : ""}`}>{slots[6]}</div>
-                                <div onClick={() => { selectSlot(7); }} className={`slot ${selectedSlot === 7 ? "selected-slot" : ""}`}>{slots[7]}</div>
-                                <div onClick={() => { selectSlot(8); }} className={`slot ${selectedSlot === 8 ? "selected-slot" : ""}`}>{slots[8]}</div>
-                            </div>
-                            <p className='session-card-slot'>Evening</p>
-                            <div className='slot-container'>
-                                <div onClick={() => { selectSlot(9); }} className={`slot ${selectedSlot === 9 ? "selected-slot" : ""}`}>{slots[9]}</div>
-                                <div onClick={() => { selectSlot(10); }} className={`slot ${selectedSlot === 10 ? "selected-slot" : ""}`}>{slots[10]}</div>
-                                <div onClick={() => { selectSlot(11); }} className={`slot ${selectedSlot === 11 ? "selected-slot" : ""}`}>{slots[11]}</div>
-                                <div onClick={() => { selectSlot(12); }} className={`slot ${selectedSlot === 12 ? "selected-slot" : ""}`}>{slots[12]}</div>
-                                <div onClick={() => { selectSlot(13); }} className={`slot ${selectedSlot === 13 ? "selected-slot" : ""}`}>{slots[13]}</div>
-                                <div onClick={() => { selectSlot(14); }} className={`slot ${selectedSlot === 14 ? "selected-slot" : ""}`}>{slots[14]}</div>
-                                <div onClick={() => { selectSlot(15); }} className={`slot ${selectedSlot === 15 ? "selected-slot" : ""}`}>{slots[15]}</div>
-                                <div onClick={() => { selectSlot(16); }} className={`slot ${selectedSlot === 16 ? "selected-slot" : ""}`}>{slots[16]}</div>
-                            </div>
-                            <button className='doctorPage-submit-btn' onClick={() => { handleSubmitSlot() }}>Submit</button>
+                    <div className='doctorProfile'>
+                        <div className='user-profile-img'>
+                            <img src={location?.image ? location?.image : userImage} alt='' />
                         </div>
-                    </div>
-                </div>
-            </div> : <></>}
+                        <p className='doctorName'>{location?.Name ? location?.Name : doctorName}</p>
+                        <p className='doctorProffesion'>Clinical psychologist</p>
 
-            {popUpPages === 2 ? <div className='session-book-page-container'>
-                <div className='session-book-page'>
-                    <div className='navbar'>
-                        <div className='back-btn'>
-                            <button className='back-btn' onClick={() => { setPopUpPages(1); }}><Back color="black" /></button>
+                        <div className='doctorDetailsRow'>
+                            <div className='row-box'>
+                                <div className='detail-sub-heading'>Paitent</div>
+                                <div className='detail-heading'>100+</div>
+                            </div>
+                            <div className='row-box'>
+                                <div className='detail-sub-heading'>Experiences</div>
+                                <div className='detail-heading'>10 years</div>
+                            </div>
+                            <div className='row-box'>
+                                <div className='detail-sub-heading'>Rating</div>
+                                <div className='detail-heading'>4.0</div>
+                            </div>
                         </div>
+
+                        <div className='doctor-detail-text-box'>
+                            <p>
+                                <b>{location?.Name ? location?.Name : doctorName}</b> is a leading {location?.Profession ? location?.Profession : "psychiatrist"} based at The London Medical Specialist Clinic, who specializes in psychosis, depression, self-harm, psychotherapy, suicidal thoughts, bipolar illness, and personality disorders. <b>{location?.Name ? location?.Name : doctorName} received her medical training and doctorate in psychiatry from the University of Rome in Italy. She has extensive clinical and research experience from both the USA and Europe. She has worked as a clinical lecturer at King's College's Institute of Psychiatry Maudsley Hospital since 2008. There, she conducts research on individuals who have experienced their first psychotic episode with a particular interest in metabolic anomalies, childhood maltreatment, and sexual function. She also has experience from her time spent caring for individuals with severe mental illness who were experiencing psychosis at the National Psychosis Unit. After serving as a consultant psychiatrist for an inpatient facility housing females who were at a high risk of self-harm and suicide, Dr Ignacio has extensive expertise working with patients who suffer from personality disorders.</b> She also deals with patients affected by anxiety and depression. <b>{location?.Name ? location?.Name : doctorName}</b> has collaborated with the Italian health services to repatriate numerous citizens with mental health-related difficulties.
+                            </p>
+                        </div>
+
+                        <div className='reviewHeading'>Review (126)</div>
+
+                        <div className='doctor-detail-text-box customerReview-box'>
+                            <div className='customerReview'>
+                                <img src='https://i.pinimg.com/originals/7e/50/c1/7e50c1e9a5af3f7777b96569f05b6958.jpg' alt='' className='customerImg' />
+                                <div className='cutromerNameColumn'>
+                                    <p>Elizabeth Feil</p>
+                                    <StartRating />
+                                </div>
+                            </div>
+                            <p>
+                                <b>{location?.Name ? location?.Name : doctorName}</b> is an excellent {location?.Profession ? location?.Profession : "psychiatrist"}. <b>{location?.Name ? location?.Name : doctorName}</b> was very supportive. Creating a comfortable and safe environment during the consultations was so helpful in coming to terms with things. Her explanations were excellent, encouraging you to think and consider wider aspects of your life. <b>Would definitely recommend her.</b>
+                            </p>
+                        </div>
+                        <button className='doctorProfile-btn' onClick={getDateOnConsole}>Next</button>
                     </div>
-                    <div className='session-book-card '>
-                        <div className='card-Box-booked-slot-details'>
-                            <p>Dear {username ? username : ""},</p>
-                            <p>We've booked you a visit at XYZ Clinic</p>
-                            <div>
-                                <p> Here are the details: Doctor/Staff:</p>
-                                <b>{location?.Name ? location?.Name : doctorName}</b>
+                </div>
+            )}
+
+            {popUpPages === 1 && (
+                <div className='session-book-page-container'>
+                    <div className='session-book-page'>
+                        <div className='navbar'>
+                            <div className='back-btn'>
+                                <button className='back-btn' onClick={() => setPopUpPages(0)}>
+                                    <Back color="black" />
+                                </button>
                             </div>
-                            <div>
-                                <p>Purpose: Consultation </p>
-                                <p>Date: {selectedDate}</p>
-                            </div>
-                            <div>
-                                <p>Serial no: 28 </p>
-                                <p> Reporting time: {slots[selectedSlot]}</p>
+                        </div>
+                        <div className='session-book-card '>
+                            <div className='card-Box'>
+                                <div className='date-picker'>
+                                    <DatePicker handleSliderChange={(index) => { selectedDate = datesArray[index]; }} />
+                                </div>
+                                <div className='partition-line'></div>
+                                <p className='session-card-slot'>Morning</p>
+                                <div className='slot-container'>
+                                    {slots.slice(1, 9).map((slot, index) => (
+                                        <div
+                                            key={index + 1}
+                                            onClick={() => selectSlot(index + 1)}
+                                            className={`slot ${selectedSlot === index + 1 ? "selected-slot" : ""}`}
+                                        >
+                                            {slot}
+                                        </div>
+                                    ))}
+                                </div>
+                                <p className='session-card-slot'>Evening</p>
+                                <div className='slot-container'>
+                                    {slots.slice(9, 17).map((slot, index) => (
+                                        <div
+                                            key={index + 9}
+                                            onClick={() => selectSlot(index + 9)}
+                                            className={`slot ${selectedSlot === index + 9 ? "selected-slot" : ""}`}
+                                        >
+                                            {slot}
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className='doctorPage-submit-btn' onClick={handleSubmitSlot}>Submit</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> : <></>}
+            )}
+
+            {popUpPages === 2 && (
+                <div className='session-book-page-container'>
+                    <div className='session-book-page'>
+                        <div className='navbar'>
+                            <div className='back-btn'>
+                                <button className='back-btn' onClick={() => setPopUpPages(1)}>
+                                    <Back color="black" />
+                                </button>
+                            </div>
+                        </div>
+                        <div className='session-book-card '>
+                            <div className='card-Box-booked-slot-details'>
+                                <p>Dear {username ? username : ""},</p>
+                                <p>We've booked you a visit at XYZ Clinic</p>
+                                <div>
+                                    <p>Here are the details: Doctor/Staff:</p>
+                                    <b>{location?.Name ? location?.Name : doctorName}</b>
+                                </div>
+                                <div>
+                                    <p>Purpose: Consultation</p>
+                                    <p>Date: {selectedDate}</p>
+                                </div>
+                                <div>
+                                    <p>Serial no: 28</p>
+                                    <p>Reporting time: {slots[selectedSlot]}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default DoctorProfile
-
+export default DoctorProfile;
 
 const datesArray = [];
 class DatePicker extends Component {
@@ -297,7 +295,7 @@ h3  {
 }
 .center .slick-center h3 {
     color: #ffffff;
-    background: #113F67;
+    background: #000;
     opacity: 1;
     -ms-transform: scale(1.08);
     transform: scale(1.08);
