@@ -27,6 +27,9 @@ app.use(cors());
 app.use(cookieParser());
 app.use(Express.json());
 
+app.use('/', (req, res) => {
+    res.send("Hello");
+});
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/questions', questionsRoutes);
